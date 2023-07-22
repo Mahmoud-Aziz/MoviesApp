@@ -9,7 +9,6 @@
 import Foundation
 
 // MARK: - GetPopularMoviesUseCaseProtocol
-
 protocol GetPopularMoviesUseCaseProtocol {}
 
 // MARK: - GetPopularMoviesUseCase
