@@ -1,0 +1,32 @@
+excluded:
+  - Pods
+
+disabled_rules:
+  - trailing_whitespace
+  - inclusive_language
+
+opt_in_rules:
+  - force_unwrapping
+  - type_name
+
+force_cast:
+  severity: error
+force_unwrapping:
+  severity: error
+force_try:
+  severity: error
+
+type_name:
+  max_length:
+    warning: 60
+
+line_length:
+    warning: 120
+
+identifier_name:
+  max_length:
+    warning: 60
+    
+function_parameter_count:
+    warning: 5
+

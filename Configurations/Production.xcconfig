@@ -1,0 +1,9 @@
+//
+//  Production.xcconfig
+//  MoviesApp
+//
+//  Created by Mahmoud Aziz on 22/07/2023.
+//
+
+#include "Configurations/Shared.xcconfig"
+#include "Pods/Target Support Files/Pods-MoviesApp/Pods-MoviesApp.production.xcconfig"

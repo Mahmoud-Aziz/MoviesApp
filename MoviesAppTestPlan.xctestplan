@@ -2,17 +2,23 @@
   "configurations" : [
     {
       "id" : "D5FD8193-AD21-448F-B96E-E719F343BF3C",
-      "name" : "Configuration 1",
+      "name" : "Configuration",
       "options" : {
 
       }
     }
   ],
   "defaultOptions" : {
-    "testTimeoutsEnabled" : true
+
   },
   "testTargets" : [
-
+    {
+      "target" : {
+        "containerPath" : "container:MoviesApp.xcodeproj",
+        "identifier" : "62E4F4B82A6AF19900EA5652",
+        "name" : "MoviesAppTests"
+      }
+    }
   ],
   "version" : 1
 }

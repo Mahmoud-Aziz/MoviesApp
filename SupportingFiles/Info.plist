@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>TMDB_access_token</key>
+	<string>$(TMDB_access_token)</string>
+	<key>App_api_key</key>
+	<string>$(App_api_key)</string>
+	<key>CFBundleDisplayName</key>
+	<string>$(App_name)</string>
+	<key>App_api_base_url</key>
+	<string>$(App_api_base_url)</string>
+	<key>App_api_service_url_schema</key>
+	<string>$(App_api_service_url_schema)</string>
+	<key>App_bundle_identifier</key>
+	<string>$(App_bundle_identifier)</string>
+	<key>App_name</key>
+	<string>$(App_name)</string>
+</dict>
+</plist>
