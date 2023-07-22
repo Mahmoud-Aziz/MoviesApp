@@ -9,14 +9,14 @@
 import Foundation
 
 enum APIHostURL {
-    case baseURL
-
-    var url: URL? {
-        let url: String
-        switch self {
-        case .baseURL:
-            url = ServiceLocator.shared.environment.baseURL
-            return URL(string: url)
-        }
+  case baseURL
+  
+  var url: URL? {
+    let url: String
+    switch self {
+    case .baseURL:
+      url = ServiceLocator.shared.environment.baseURL
+      return URL(string: url)
     }
+  }
 }

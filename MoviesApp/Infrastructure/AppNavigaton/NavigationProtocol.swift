@@ -9,5 +9,5 @@
 import Foundation
 
 protocol NavigationProtocol {
-    func navigate(to route: RouteProtocol)
+  func navigate(to route: RouteProtocol)
 }

@@ -9,6 +9,6 @@
 import Foundation
 
 enum HeaderKeys: String {
-    case accept = "Accept"
-    case authorization = "Authorization"
+  case accept = "Accept"
+  case authorization = "Authorization"
 }

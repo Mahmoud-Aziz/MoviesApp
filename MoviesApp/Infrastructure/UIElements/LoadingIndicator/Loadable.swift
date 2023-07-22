@@ -9,5 +9,5 @@
 import Foundation
 
 protocol Loadable {
-    func showLoader(_ show: Bool)
+  func showLoader(_ show: Bool)
 }

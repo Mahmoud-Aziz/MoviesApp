@@ -9,12 +9,12 @@
 import Foundation
 
 enum APIError: Error {
-    case badURLResponse
-    case failureStatusCode
-    case mappingError
-    case corruptedData
-    case failedRequest
-    case unreachable
-    case cancelled
-    case badServerResponse
+  case badURLResponse
+  case failureStatusCode
+  case mappingError
+  case corruptedData
+  case failedRequest
+  case unreachable
+  case cancelled
+  case badServerResponse
 }
