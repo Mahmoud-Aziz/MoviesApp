@@ -46,6 +46,11 @@ class AppEnvironmentTests: XCTestCase {
     XCTAssertFalse(appName.isEmpty, "Fetched string should not be empty")
   }
   
+  func testFetchAccessToken() {
+    let accessToken = appEnvironment.string(key: .accessToken)
+    XCTAssertFalse(accessToken.isEmpty, "Fetched string should not be empty")
+  }
+  
   // Test for a missing key in Info.plist
   func testMissingKey() {
     // Provide a non-existent key to test

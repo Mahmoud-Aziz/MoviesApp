@@ -12,7 +12,7 @@ typealias ResultClosure<T: Decodable> = (Result<T, APIError>) -> Void
 
 // MARK: - APIService
 protocol APIServiceProtocol {
-  func sendRequest<T: Decodable>(_ decodable: T.Type, request: URLRequest, completion: @escaping ResultClosure<T>)
+  func sendRequest<T: Decodable>(decodable: T.Type, request: URLRequest, completion: @escaping ResultClosure<T>)
 }
 
 // MARK: - APIService
@@ -23,23 +23,22 @@ class APIService: APIServiceProtocol {
     self.session = session
   }
   
-  func sendRequest<T: Decodable>(_ decodable: T.Type, request: URLRequest, completion: @escaping ResultClosure<T>) {
+  func sendRequest<T: Decodable>(decodable: T.Type, request: URLRequest, completion: @escaping ResultClosure<T>) {
     let task = session.dataTask(with: request) { data, _, error in
       DispatchQueue.main.async {
         if error != nil {
           completion(.failure(APIError.failedRequest))
           return
         }
-        
         guard let data else {
           completion(.failure(APIError.corruptedData))
           return
         }
-        
         do {
           let response = try JSONDecoder().decode(decodable.self, from: data)
           completion(.success(response))
         } catch {
+          debugPrint(error)
           completion(.failure(APIError.mappingError))
         }
       }
