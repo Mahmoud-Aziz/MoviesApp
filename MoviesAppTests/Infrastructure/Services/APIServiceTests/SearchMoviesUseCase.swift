@@ -9,9 +9,7 @@
 import Foundation
 
 // MARK: - SearchMoviesUseCaseProtocol
-
 protocol SearchMoviesUseCaseProtocol {}
 
 // MARK: - SearchMoviesUseCase
-
 class SearchMoviesUseCase: SearchMoviesUseCaseProtocol {}

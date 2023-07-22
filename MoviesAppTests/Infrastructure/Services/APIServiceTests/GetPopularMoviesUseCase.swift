@@ -12,5 +12,4 @@ import Foundation
 protocol GetPopularMoviesUseCaseProtocol {}
 
 // MARK: - GetPopularMoviesUseCase
-
 class GetPopularMoviesUseCase: GetPopularMoviesUseCaseProtocol {}

@@ -9,9 +9,7 @@
 import Foundation
 
 // MARK: - HomeRepositoryProtocol
-
 protocol HomeRepositoryProtocol {}
 
 // MARK: - HomeRepository
-
 class HomeRepository: HomeRepositoryProtocol {}
