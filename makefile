@@ -15,7 +15,6 @@ setup: \
 				pre_setup \
 				check_for_ruby \
 				install_SwiftLint \
-				install_SwiftFormat \
 				install_cocoapods \
 				install_pods \
 				after_setup
@@ -49,18 +48,7 @@ install_SwiftLint:
 	        else \
 	            echo "SwiftLint is already installed."; \
             fi
-					
-# Move pre commit
-move_pre_commit:
-	           $(info Move Pre Commit ...)
-			      	cp -R pre-commit .git/hooks
-	            chmod +x .git/hooks/pre-commit
-	          
-# Update SwiftFormat
-install_SwiftFormat: move_pre_commit
-	           $(info install swiftFormat ...)
-	            brew install swiftFormat
-  
+
 # Install Cocoapods
 install_cocoapods:
 				@echo "Checking for CocoaPods version $(PODS_VERSION) ..."

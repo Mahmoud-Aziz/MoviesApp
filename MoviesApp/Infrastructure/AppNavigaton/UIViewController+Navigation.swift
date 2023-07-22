@@ -9,18 +9,18 @@
 import UIKit
 
 extension UIViewController: NavigationProtocol {
-    func navigate(to router: RouteProtocol) {
-        navigate(to: router.destination, with: router.style)
+  func navigate(to router: RouteProtocol) {
+    navigate(to: router.destination, with: router.style)
+  }
+  
+  private func navigate(to viewController: UIViewController, with style: RouteStyle) {
+    switch style {
+    case .push:
+      navigationController?.pushViewController(viewController, animated: true)
+    case .present:
+      viewController.modalTransitionStyle = .crossDissolve
+      viewController.modalPresentationStyle = .fullScreen
+      present(viewController, animated: true, completion: nil)
     }
-
-    private func navigate(to viewController: UIViewController, with style: RouteStyle) {
-        switch style {
-        case .push:
-            navigationController?.pushViewController(viewController, animated: true)
-        case .present:
-            viewController.modalTransitionStyle = .crossDissolve
-            viewController.modalPresentationStyle = .fullScreen
-            present(viewController, animated: true, completion: nil)
-        }
-    }
+  }
 }

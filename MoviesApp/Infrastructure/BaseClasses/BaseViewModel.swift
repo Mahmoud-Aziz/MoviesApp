@@ -9,21 +9,19 @@
 import Foundation
 
 // MARK: - StatableViewModel
-
 public protocol StatableViewModel {
-    var state: Stateful? { get set }
+  var state: Stateful? { get set }
 }
 
 // MARK: - BaseViewModel + StatableViewModel
-
 class BaseViewModel: StatableViewModel {
-    private var stateful: Stateful?
-
-    var state: Stateful? {
-        get {
-            stateful
-        } set {
-            stateful = newValue
-        }
+  private var stateful: Stateful?
+  
+  var state: Stateful? {
+    get {
+      stateful
+    } set {
+      stateful = newValue
     }
+  }
 }

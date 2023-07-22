@@ -9,6 +9,6 @@
 import UIKit
 
 public protocol RouteProtocol {
-    var destination: UIViewController { get }
-    var style: RouteStyle { get }
+  var destination: UIViewController { get }
+  var style: RouteStyle { get }
 }
