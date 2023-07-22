@@ -9,46 +9,67 @@
 import UIKit
 
 // MARK: - HomeViewController
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
   // MARK: - IBOutlet
-  @IBOutlet private var homeCollectionView: UICollectionView!
+  @IBOutlet private weak var homeTableView: UITableView!
+  
+  // MARK: - Private Properties
+  private var viewModel: HomeViewModel
+  
+  // MARK: - Init
+  init(viewModel: HomeViewModel = HomeViewModel()) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
   
   // MARK: - View lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    bindViewModelState(viewModel)
     setupView()
-  }
-}
-
-// MARK: - HomeViewController
-private extension HomeViewController {
-  func setupView() {
-    homeCollectionView.registerCellNib(HomeCollectionViewCell.self)
-  }
-}
-
-// MARK: UICollectionViewDelegateFlowLayout
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
-  func collectionView(_ collectionView: UICollectionView,
-                      layout _: UICollectionViewLayout,
-                      sizeForItemAt _: IndexPath) -> CGSize
-  {
-    CGSize(width: collectionView.frame.width / 2 - 8, height: collectionView.frame.width / 2)
-  }
-}
-
-// MARK: - UICollectionViewDataSource
-extension HomeViewController: UICollectionViewDataSource {
-  func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
-    6
+    viewModel.getData()
   }
   
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell: HomeCollectionViewCell = collectionView.dequeue(cellForItemAt: indexPath)
-    cell.backgroundColor = .red
+  override func handleViewModelReloadState() {
+    super.handleViewModelReloadState()
+    homeTableView.reloadData()
+  }
+}
+
+// MARK: - Setup View
+private extension HomeViewController {
+  func setupView() {
+    homeTableView.registerCellNib(HomeTableViewCell.self)
+  }
+}
+
+// MARK: - UITableViewDataSource
+extension HomeViewController: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    viewModel.itemsCount
+  }
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    .init(150)
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell: HomeTableViewCell = tableView.dequeue(cellForItemAt: indexPath)
+    cell.configure(with: viewModel.getItem(at: indexPath))
     return cell
   }
 }
 
-// MARK: - UICollectionViewDelegate
-extension HomeViewController: UICollectionViewDelegate {}
+// MARK: - Pagination
+extension HomeViewController: UITableViewDataSourcePrefetching {
+  func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+    viewModel.prefetch(at: indexPaths)
+  }
+}
+
+// MARK: - UITableViewDelegate
+extension HomeViewController: UITableViewDelegate {}

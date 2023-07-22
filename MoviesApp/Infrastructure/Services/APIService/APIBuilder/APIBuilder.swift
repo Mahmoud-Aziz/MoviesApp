@@ -13,16 +13,18 @@ final class APIBuilder {
   private var path: String?
   private var method: HTTPMethod
   private var headers: [HeaderKeys: String]
+  private var parameters: [String: String] = [:]
   private var accessToken: String
   
   init(serviceLocator: ServiceLocatorProtocol = ServiceLocator.shared) {
     hostURL = APIHostURL.baseURL.url
     method = .get
     headers = [.accept: "application/json"]
-    accessToken = serviceLocator.environment.apiKey
+    accessToken = serviceLocator.environment.accessToken
+    setParameters(key: .apiKey, value: serviceLocator.environment.apiKey)
   }
   
-  func setHost(_ host: APIHostURL) -> APIBuilder {
+  func setHost(_ host: APIHostURL) -> Self {
     guard let url = host.url else {
       fatalError("Invalid Host URL")
     }
@@ -30,23 +32,28 @@ final class APIBuilder {
     return self
   }
   
-  func setPath(_ path: APIEndPoints) -> APIBuilder {
+  func setPath(_ path: APIEndPoints) -> Self {
     self.path = path.rawValue
     return self
   }
   
-  func setMethod(_ method: HTTPMethod) -> APIBuilder {
+  func setMethod(_ method: HTTPMethod) -> Self {
     self.method = method
     return self
   }
   
-  @discardableResult public func setAccessToken() -> APIBuilder {
+  @discardableResult public func setAccessToken() -> Self {
     headers[.authorization] = accessToken
     return self
   }
   
-  public func setHeader(_ key: HeaderKeys, _ value: String) -> APIBuilder {
+  public func setHeader(_ key: HeaderKeys, _ value: String) -> Self {
     headers[key] = value
+    return self
+  }
+  
+  @discardableResult func setParameters(key: ParameterKeys, value: String) -> Self {
+    parameters[key.rawValue] = value
     return self
   }
   
@@ -55,7 +62,10 @@ final class APIBuilder {
       fatalError("Invalid base url or path")
     }
     let url = baseURL.appendingPathComponent(path)
-    let components = URLComponents(string: url.absoluteString)
+    var components = URLComponents(string: url.absoluteString)
+    if !parameters.isEmpty {
+      components?.queryItems = parameters.compactMap { URLQueryItem(name: $0.key, value: $0.value) }
+    }
     guard let components, let url = components.url else {
       fatalError("Error Getting URL from URLComponents In RequestBuilder")
     }

@@ -2,10 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Roboto-Light.ttf</string>
+		<string>Roboto-Regular.ttf</string>
+		<string>Roboto-Thin.ttf</string>
+	</array>
 	<key>TMDB_access_token</key>
 	<string>$(TMDB_access_token)</string>
-	<key>App_api_key</key>
-	<string>$(App_api_key)</string>
+	<key>TMDB_api_key</key>
+	<string>$(TMDB_api_key)</string>
 	<key>CFBundleDisplayName</key>
 	<string>$(App_name)</string>
 	<key>App_api_base_url</key>

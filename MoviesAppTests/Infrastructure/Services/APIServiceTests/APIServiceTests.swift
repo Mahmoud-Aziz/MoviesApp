@@ -51,7 +51,7 @@ class APIServiceTests: XCTestCase {
       return (response, sampleData)
     }
     // When
-    apiService.sendRequest(ResponseModelForTest.self, request: createSampleRequest()) { result in
+    apiService.sendRequest(decodable: ResponseModelForTest.self, request: createSampleRequest()) { result in
       // Then
       switch result {
       case let .success(response):
@@ -85,7 +85,7 @@ class APIServiceTests: XCTestCase {
     }
     
     // When
-    apiService.sendRequest(ResponseModelForTest.self, request: createSampleRequest()) { result in
+    apiService.sendRequest(decodable: ResponseModelForTest.self, request: createSampleRequest()) { result in
       // Then
       switch result {
       case let .success(response):

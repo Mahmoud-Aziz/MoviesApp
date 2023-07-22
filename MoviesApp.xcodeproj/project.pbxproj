@@ -37,9 +37,22 @@
 		62D9497B2A6C3A42007A0C37 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D9497A2A6C3A42007A0C37 /* HomeViewModel.swift */; };
 		62D9497E2A6C3A4D007A0C37 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D9497C2A6C3A4D007A0C37 /* HomeViewController.swift */; };
 		62D9497F2A6C3A4D007A0C37 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D9497D2A6C3A4D007A0C37 /* HomeViewController.xib */; };
-		62D949852A6C40AC007A0C37 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D949832A6C40AC007A0C37 /* HomeCollectionViewCell.swift */; };
-		62D949862A6C40AC007A0C37 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D949842A6C40AC007A0C37 /* HomeCollectionViewCell.xib */; };
 		62D949892A6C40FA007A0C37 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D949882A6C40FA007A0C37 /* UICollectionView+Extension.swift */; };
+		62D9498B2A6C4E61007A0C37 /* PopularMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D9498A2A6C4E61007A0C37 /* PopularMovies.swift */; };
+		62D9498D2A6C5AB8007A0C37 /* ParameterKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D9498C2A6C5AB8007A0C37 /* ParameterKeys.swift */; };
+		62D9498F2A6C62AD007A0C37 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D9498E2A6C62AD007A0C37 /* UITableView+Extension.swift */; };
+		62D949932A6C62EC007A0C37 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D949912A6C62EC007A0C37 /* HomeTableViewCell.swift */; };
+		62D949942A6C62EC007A0C37 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D949922A6C62EC007A0C37 /* HomeTableViewCell.xib */; };
+		62D9499C2A6C6D97007A0C37 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62D949992A6C6D97007A0C37 /* Roboto-Thin.ttf */; };
+		62D9499D2A6C6D97007A0C37 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62D9499A2A6C6D97007A0C37 /* Roboto-Light.ttf */; };
+		62D9499E2A6C6D97007A0C37 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62D9499B2A6C6D97007A0C37 /* Roboto-Regular.ttf */; };
+		62D949A02A6C6DCE007A0C37 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D9499F2A6C6DCE007A0C37 /* UIFont+Extension.swift */; };
+		62D949A52A6C826D007A0C37 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D949A42A6C826D007A0C37 /* TitleLabel.swift */; };
+		62D949A72A6C833F007A0C37 /* SubtitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D949A62A6C833F007A0C37 /* SubtitleLabel.swift */; };
+		62D949A92A6C8364007A0C37 /* DescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D949A82A6C8364007A0C37 /* DescriptionLabel.swift */; };
+		62D949AD2A6C83A4007A0C37 /* LeadingInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D949AC2A6C83A4007A0C37 /* LeadingInfoView.swift */; };
+		62D949AF2A6C83A9007A0C37 /* LeadingInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D949AE2A6C83A9007A0C37 /* LeadingInfoView.xib */; };
+		62D949B12A6C8446007A0C37 /* UI+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D949B02A6C8446007A0C37 /* UI+Extension.swift */; };
 		62E4F4C62A6AF1D600EA5652 /* APIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E4F4C52A6AF1D600EA5652 /* APIServiceTests.swift */; };
 		62E4F4D92A6B0E8700EA5652 /* AppEnvironmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E4F4CF2A6AFF7E00EA5652 /* AppEnvironmentTests.swift */; };
 /* End PBXBuildFile section */
@@ -90,9 +103,22 @@
 		62D9497A2A6C3A42007A0C37 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewModel.swift; path = MoviesApp/Features/Home/Presentation/ViewModel/HomeViewModel.swift; sourceTree = SOURCE_ROOT; };
 		62D9497C2A6C3A4D007A0C37 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = MoviesApp/Features/Home/Presentation/View/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
 		62D9497D2A6C3A4D007A0C37 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeViewController.xib; path = MoviesApp/Features/Home/Presentation/View/HomeViewController.xib; sourceTree = SOURCE_ROOT; };
-		62D949832A6C40AC007A0C37 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
-		62D949842A6C40AC007A0C37 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		62D949882A6C40FA007A0C37 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		62D9498A2A6C4E61007A0C37 /* PopularMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMovies.swift; sourceTree = "<group>"; };
+		62D9498C2A6C5AB8007A0C37 /* ParameterKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterKeys.swift; sourceTree = "<group>"; };
+		62D9498E2A6C62AD007A0C37 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		62D949912A6C62EC007A0C37 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		62D949922A6C62EC007A0C37 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		62D949992A6C6D97007A0C37 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		62D9499A2A6C6D97007A0C37 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		62D9499B2A6C6D97007A0C37 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		62D9499F2A6C6DCE007A0C37 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		62D949A42A6C826D007A0C37 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		62D949A62A6C833F007A0C37 /* SubtitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleLabel.swift; sourceTree = "<group>"; };
+		62D949A82A6C8364007A0C37 /* DescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionLabel.swift; sourceTree = "<group>"; };
+		62D949AC2A6C83A4007A0C37 /* LeadingInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadingInfoView.swift; sourceTree = "<group>"; };
+		62D949AE2A6C83A9007A0C37 /* LeadingInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeadingInfoView.xib; sourceTree = "<group>"; };
+		62D949B02A6C8446007A0C37 /* UI+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI+Extension.swift"; sourceTree = "<group>"; };
 		62E4F4B92A6AF19900EA5652 /* MoviesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoviesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62E4F4C52A6AF1D600EA5652 /* APIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceTests.swift; sourceTree = "<group>"; };
 		62E4F4CF2A6AFF7E00EA5652 /* AppEnvironmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironmentTests.swift; sourceTree = "<group>"; };
@@ -127,6 +153,7 @@
 				624E63512A685FAE00977DC3 /* MoviesApp */,
 				62E4F4BA2A6AF19900EA5652 /* MoviesAppTests */,
 				624E63692A685FB800977DC3 /* Configurations */,
+				62D949952A6C6D12007A0C37 /* Resources */,
 				624E63732A686B2600977DC3 /* Frameworks */,
 				C595E75CA53103639551DDD8 /* Pods */,
 				624E63502A685FAE00977DC3 /* Products */,
@@ -191,10 +218,10 @@
 		624E63952A69603D00977DC3 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				62D949872A6C40B7007A0C37 /* Extensions */,
 				624E63F92A6AC60B00977DC3 /* AppEnvironment */,
 				62D949342A6B16A4007A0C37 /* AppNavigaton */,
 				62D949422A6B195F007A0C37 /* BaseClasses */,
+				62D949872A6C40B7007A0C37 /* Extensions */,
 				624E64022A6AC7C600977DC3 /* ServiceLocator */,
 				624E63E02A6AC51A00977DC3 /* Services */,
 				62D9494C2A6B1C5F007A0C37 /* State */,
@@ -228,6 +255,7 @@
 				624E63EF2A6AC57400977DC3 /* APIHostURL.swift */,
 				624E63F02A6AC57400977DC3 /* HeaderKeys.swift */,
 				624E63EC2A6AC57400977DC3 /* HTTPMethod.swift */,
+				62D9498C2A6C5AB8007A0C37 /* ParameterKeys.swift */,
 			);
 			path = APIBuilder;
 			sourceTree = "<group>";
@@ -298,6 +326,7 @@
 		62D9494F2A6B1DBA007A0C37 /* UIElements */ = {
 			isa = PBXGroup;
 			children = (
+				62D949A22A6C755E007A0C37 /* ReusableUIComponents */,
 				62D949502A6B1DCB007A0C37 /* LoadingIndicator */,
 			);
 			path = UIElements;
@@ -376,6 +405,7 @@
 		62D949752A6C39E0007A0C37 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				62D9498A2A6C4E61007A0C37 /* PopularMovies.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -383,7 +413,7 @@
 		62D949802A6C3A50007A0C37 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				62D949822A6C408F007A0C37 /* HomeCollectionViewCell */,
+				62D949902A6C62D3007A0C37 /* HomeTableViewCell */,
 				62D9497C2A6C3A4D007A0C37 /* HomeViewController.swift */,
 				62D9497D2A6C3A4D007A0C37 /* HomeViewController.xib */,
 			);
@@ -398,21 +428,86 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		62D949822A6C408F007A0C37 /* HomeCollectionViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				62D949832A6C40AC007A0C37 /* HomeCollectionViewCell.swift */,
-				62D949842A6C40AC007A0C37 /* HomeCollectionViewCell.xib */,
-			);
-			path = HomeCollectionViewCell;
-			sourceTree = "<group>";
-		};
 		62D949872A6C40B7007A0C37 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				62D949882A6C40FA007A0C37 /* UICollectionView+Extension.swift */,
+				62D949A12A6C753F007A0C37 /* UI */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		62D949902A6C62D3007A0C37 /* HomeTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				62D949912A6C62EC007A0C37 /* HomeTableViewCell.swift */,
+				62D949922A6C62EC007A0C37 /* HomeTableViewCell.xib */,
+			);
+			path = HomeTableViewCell;
+			sourceTree = "<group>";
+		};
+		62D949952A6C6D12007A0C37 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				62D949962A6C6D24007A0C37 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		62D949962A6C6D24007A0C37 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				62D9499A2A6C6D97007A0C37 /* Roboto-Light.ttf */,
+				62D9499B2A6C6D97007A0C37 /* Roboto-Regular.ttf */,
+				62D949992A6C6D97007A0C37 /* Roboto-Thin.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		62D949A12A6C753F007A0C37 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				62D949882A6C40FA007A0C37 /* UICollectionView+Extension.swift */,
+				62D9498E2A6C62AD007A0C37 /* UITableView+Extension.swift */,
+				62D9499F2A6C6DCE007A0C37 /* UIFont+Extension.swift */,
+				62D949B02A6C8446007A0C37 /* UI+Extension.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		62D949A22A6C755E007A0C37 /* ReusableUIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				62D949AA2A6C838E007A0C37 /* Views */,
+				62D949A32A6C8262007A0C37 /* Labels */,
+			);
+			path = ReusableUIComponents;
+			sourceTree = "<group>";
+		};
+		62D949A32A6C8262007A0C37 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				62D949A42A6C826D007A0C37 /* TitleLabel.swift */,
+				62D949A62A6C833F007A0C37 /* SubtitleLabel.swift */,
+				62D949A82A6C8364007A0C37 /* DescriptionLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		62D949AA2A6C838E007A0C37 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				62D949AB2A6C8394007A0C37 /* LeadingInfoView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		62D949AB2A6C8394007A0C37 /* LeadingInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				62D949AC2A6C83A4007A0C37 /* LeadingInfoView.swift */,
+				62D949AE2A6C83A9007A0C37 /* LeadingInfoView.xib */,
+			);
+			path = LeadingInfoView;
 			sourceTree = "<group>";
 		};
 		62E4F4BA2A6AF19900EA5652 /* MoviesAppTests */ = {
@@ -553,8 +648,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62D9499E2A6C6D97007A0C37 /* Roboto-Regular.ttf in Resources */,
+				62D9499C2A6C6D97007A0C37 /* Roboto-Thin.ttf in Resources */,
 				624E635F2A685FAF00977DC3 /* Assets.xcassets in Resources */,
-				62D949862A6C40AC007A0C37 /* HomeCollectionViewCell.xib in Resources */,
+				62D9499D2A6C6D97007A0C37 /* Roboto-Light.ttf in Resources */,
+				62D949942A6C62EC007A0C37 /* HomeTableViewCell.xib in Resources */,
+				62D949AF2A6C83A9007A0C37 /* LeadingInfoView.xib in Resources */,
 				62D9497F2A6C3A4D007A0C37 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,11 +734,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				62D949682A6C1600007A0C37 /* States.swift in Sources */,
+				62D949B12A6C8446007A0C37 /* UI+Extension.swift in Sources */,
+				62D9498D2A6C5AB8007A0C37 /* ParameterKeys.swift in Sources */,
+				62D949A92A6C8364007A0C37 /* DescriptionLabel.swift in Sources */,
 				62D949542A6B1E24007A0C37 /* UIViewController+Loadable.swift in Sources */,
 				624E63EB2A6AC56B00977DC3 /* APIService.swift in Sources */,
 				62D9497B2A6C3A42007A0C37 /* HomeViewModel.swift in Sources */,
 				624E63F52A6AC57400977DC3 /* HeaderKeys.swift in Sources */,
-				62D949852A6C40AC007A0C37 /* HomeCollectionViewCell.swift in Sources */,
 				624E63532A685FAE00977DC3 /* AppDelegate.swift in Sources */,
 				624E63FE2A6AC63500977DC3 /* EnvironmentKey.swift in Sources */,
 				62D949892A6C40FA007A0C37 /* UICollectionView+Extension.swift in Sources */,
@@ -647,6 +748,9 @@
 				624E63E92A6AC56B00977DC3 /* APIError.swift in Sources */,
 				624E63F12A6AC57400977DC3 /* HTTPMethod.swift in Sources */,
 				62D949362A6B16C1007A0C37 /* NavigationProtocol.swift in Sources */,
+				62D9498B2A6C4E61007A0C37 /* PopularMovies.swift in Sources */,
+				62D949A02A6C6DCE007A0C37 /* UIFont+Extension.swift in Sources */,
+				62D949A52A6C826D007A0C37 /* TitleLabel.swift in Sources */,
 				62D9497E2A6C3A4D007A0C37 /* HomeViewController.swift in Sources */,
 				62D949742A6C39B7007A0C37 /* HomeRepository.swift in Sources */,
 				62D9493B2A6B171F007A0C37 /* RouteProtocol.swift in Sources */,
@@ -656,11 +760,15 @@
 				62D949522A6B1DF2007A0C37 /* Loadable.swift in Sources */,
 				624E63F42A6AC57400977DC3 /* APIHostURL.swift in Sources */,
 				624E64062A6AC8C600977DC3 /* ServiceLocator.swift in Sources */,
+				62D9498F2A6C62AD007A0C37 /* UITableView+Extension.swift in Sources */,
 				624E63F22A6AC57400977DC3 /* APIEndPoints.swift in Sources */,
 				624E63FF2A6AC63500977DC3 /* AppEnvironment.swift in Sources */,
+				62D949A72A6C833F007A0C37 /* SubtitleLabel.swift in Sources */,
 				624E63F32A6AC57400977DC3 /* APIBuilder.swift in Sources */,
+				62D949AD2A6C83A4007A0C37 /* LeadingInfoView.swift in Sources */,
 				62D949392A6B170B007A0C37 /* RouteStyle.swift in Sources */,
 				62D949792A6C3A34007A0C37 /* SearchMoviesUseCase.swift in Sources */,
+				62D949932A6C62EC007A0C37 /* HomeTableViewCell.swift in Sources */,
 				62D949772A6C3A0C007A0C37 /* GetPopularMoviesUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

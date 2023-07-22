@@ -14,6 +14,7 @@ protocol AppEnvironmentProtocol {
   var appName: String { get }
   var baseURL: String { get }
   var apiKey: String { get }
+  var accessToken: String { get }
   func string(key: EnvironmentKey) -> String
   func boolean(key: EnvironmentKey) -> Bool
   func fetch(key: String) throws -> String

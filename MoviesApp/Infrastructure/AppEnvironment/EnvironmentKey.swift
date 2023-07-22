@@ -13,6 +13,6 @@ enum EnvironmentKey: String {
   case baseURL = "App_api_base_url"
   case bundleIdentifier = "App_bundle_identifier"
   case appName = "App_name"
-  case apiKey = "App_api_key"
+  case apiKey = "TMDB_api_key"
   case accessToken = "TMDB_access_token"
 }
