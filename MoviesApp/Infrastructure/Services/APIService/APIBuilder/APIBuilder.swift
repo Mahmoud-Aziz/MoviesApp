@@ -32,8 +32,13 @@ final class APIBuilder {
     return self
   }
   
-  func setPath(_ path: APIEndPoints) -> Self {
-    self.path = path.rawValue
+  func setPath(_ path: APIEndPoints, suffixes: [String]? = nil) -> Self {
+    guard let suffixes, !suffixes.isEmpty else {
+      self.path = path.rawValue
+      return self
+    }
+    let concatenatedSuffixes = suffixes.joined(separator: "/")
+    self.path = path.rawValue + "/\(concatenatedSuffixes)"
     return self
   }
   

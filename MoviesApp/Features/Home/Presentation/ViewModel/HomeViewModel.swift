@@ -12,7 +12,9 @@ class HomeViewModel: BaseViewModel {
   // MARK: - Use Cases
   private var getPopularMoviesUseCase: GetPopularMoviesUseCaseProtocol
   private var searchMoviesUseCase: SearchMoviesUseCaseProtocol
-  
+  private var movieDetailsUseCase: MovieDetailsUseCaseProtocol
+  private var environment: AppEnvironmentProtocol
+
   // MARK: - Private Properties
   private(set) var movies: [Movie]?
   private(set) var currentPage = 1
@@ -21,9 +23,13 @@ class HomeViewModel: BaseViewModel {
   
   // MARK: - Init
   init(getPopularMoviesUseCase: GetPopularMoviesUseCaseProtocol = GetPopularMoviesUseCase(),
-       searchMoviesUseCase: SearchMoviesUseCaseProtocol = SearchMoviesUseCase()) {
+       searchMoviesUseCase: SearchMoviesUseCaseProtocol = SearchMoviesUseCase(),
+       movieDetailsUseCase: MovieDetailsUseCaseProtocol = MovieDetailsUseCase(),
+       environment: AppEnvironmentProtocol = AppEnvironment()) {
     self.getPopularMoviesUseCase = getPopularMoviesUseCase
     self.searchMoviesUseCase = searchMoviesUseCase
+    self.movieDetailsUseCase = movieDetailsUseCase
+    self.environment = ServiceLocator.shared.environment
     super.init()
   }
 }
@@ -100,7 +106,20 @@ extension HomeViewModel {
     return searchFilteredResults[indexPath.row]
   }
   
+  func didSelectItem(at index: IndexPath) {
+    guard let movies else { return }
+    let id = movies[index.row].id
+    state?.update(newState: .loading)
+    movieDetailsUseCase.execute(id: id) { details, similars, cast in
+    
+    }
+  }
+  
   var itemsCount: Int {
     searchFilteredResults?.count ?? .zero
+  }
+  
+  var viewTitle: String {
+    environment.appName
   }
 }
