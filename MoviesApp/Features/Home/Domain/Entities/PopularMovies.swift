@@ -26,9 +26,10 @@ struct PopularMovies: Decodable {
 struct Movie: Decodable {
   let genreIDS: [Int]?
   let id: Int
-  let title:String
-  let posterPath, releaseDate: String?
-  let voteAverage: Double?
+  let title: String
+  let posterPath: String?
+  private let releaseDate: String?
+  private let voteAverage: Double?
   
   enum CodingKeys: String, CodingKey {
     case genreIDS = "genre_ids"
@@ -37,5 +38,26 @@ struct Movie: Decodable {
     case releaseDate = "release_date"
     case title
     case voteAverage = "vote_average"
+  }
+}
+
+extension Movie {
+  var formattedVoteAverage: String {
+    let textualRate = String(voteAverage ?? 0.0)
+    return voteAverage == .zero ? .notAvailable : textualRate
+  }
+  
+  var formattedReleaseDate: String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy/MM/dd"
+    guard let releaseDate else {
+      return .notAvailable
+    }
+    guard let date = dateFormatter.date(from: releaseDate) else {
+      return .notAvailable
+    }
+    let calendar = Calendar.current
+    let year = calendar.component(.year, from: date)
+    return String(year)
   }
 }

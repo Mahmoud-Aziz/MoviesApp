@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol Stateful {
-  func mutate(newState: State)
+  func update(newState: State)
 }

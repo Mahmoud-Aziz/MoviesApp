@@ -11,4 +11,5 @@ import Foundation
 enum ParameterKeys: String {
   case pageCount = "page"
   case apiKey = "api_key"
+  case query = "query"
 }

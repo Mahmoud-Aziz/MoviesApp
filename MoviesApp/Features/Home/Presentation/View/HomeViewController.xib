@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="MoviesApp" customModuleProvider="target">
             <connections>
+                <outlet property="homeSearchBar" destination="7iF-rr-Iyd" id="c4s-qS-2td"/>
                 <outlet property="homeTableView" destination="D5b-FO-et0" id="d2O-yC-BwU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -33,7 +34,7 @@
                                 <outlet property="delegate" destination="-1" id="rQF-m6-UPq"/>
                             </connections>
                         </searchBar>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="D5b-FO-et0">
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="D5b-FO-et0">
                             <rect key="frame" x="0.0" y="50" width="393" height="709"/>
                             <color key="backgroundColor" systemColor="systemGray6Color"/>
                             <connections>

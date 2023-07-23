@@ -9,7 +9,19 @@
 import Foundation
 
 // MARK: - SearchMoviesUseCaseProtocol
-protocol SearchMoviesUseCaseProtocol {}
+protocol SearchMoviesUseCaseProtocol {
+  func execute(query: String, completion: @escaping ResultClosure<PopularMovies>)
+}
 
 // MARK: - SearchMoviesUseCase
-class SearchMoviesUseCase: SearchMoviesUseCaseProtocol {}
+class SearchMoviesUseCase: SearchMoviesUseCaseProtocol {
+  private var repository: HomeRepositoryProtocol
+  
+  init(repository: HomeRepositoryProtocol = HomeRepository()) {
+    self.repository = repository
+  }
+  
+  func execute(query: String, completion: @escaping ResultClosure<PopularMovies>) {
+    repository.searchMovies(query: query, completion: completion)
+  }
+}
