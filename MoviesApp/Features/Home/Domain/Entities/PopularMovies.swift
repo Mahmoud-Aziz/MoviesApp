@@ -22,12 +22,12 @@ struct PopularMovies: Decodable {
   }
 }
 
-// MARK: - Movies
+// MARK: - Movie
 struct Movie: Decodable {
   let id: Int
   let title: String
-  let releaseDate: String?
-  let voteAverage: Double?
+  private let releaseDate: String?
+  private let voteAverage: Double?
   
   enum CodingKeys: String, CodingKey {
     case id
@@ -37,6 +37,7 @@ struct Movie: Decodable {
   }
 }
 
+// MARK: - Processing Data
 extension Movie {
   var formattedVoteAverage: String {
     let textualRate = String(voteAverage ?? 0.0)

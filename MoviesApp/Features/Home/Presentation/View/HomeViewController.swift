@@ -52,6 +52,7 @@ class HomeViewController: BaseViewController {
 // MARK: - Setup View
 private extension HomeViewController {
   func setupView() {
+    title = viewModel.viewTitle
     homeTableView.registerCellNib(HomeTableViewCell.self)
   }
 }
@@ -81,7 +82,12 @@ extension HomeViewController: UITableViewDataSourcePrefetching {
 }
 
 // MARK: - UITableViewDelegate
-extension HomeViewController: UITableViewDelegate {}
+extension HomeViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: false)
+    viewModel.didSelectItem(at: indexPath)
+  }
+}
 
 // MARK: UISearchBarDelegate
 extension HomeViewController: UISearchBarDelegate {

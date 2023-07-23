@@ -11,4 +11,5 @@ import Foundation
 enum APIEndPoints: String {
   case popularMovies = "/movie/popular"
   case searchMovie = "/search/movie"
+  case movie = "/movie"
 }
