@@ -11,6 +11,7 @@ import UIKit
 // MARK: - HomeViewController
 class HomeViewController: BaseViewController {
   // MARK: - IBOutlet
+  @IBOutlet private weak var failureView: FailureView!
   @IBOutlet private weak var homeSearchBar: UISearchBar!
   @IBOutlet private weak var homeTableView: UITableView!
   
@@ -38,7 +39,13 @@ class HomeViewController: BaseViewController {
   
   override func handleViewModelReloadState() {
     super.handleViewModelReloadState()
+    homeTableView.isHidden = false
     homeTableView.reloadData()
+  }
+  
+  override func handleViewModelFailureState(error: ErrorPresentable) {
+    homeTableView.isHidden = true
+    failureView.configure(image: error.image, description: error.message)
   }
 }
 

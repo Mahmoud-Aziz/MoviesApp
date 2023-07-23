@@ -1,5 +1,5 @@
 //
-//  UI+Extension.swift
+//  UIView+Extension.swift
 //  MoviesApp
 //
 //  Created by Mahmoud Aziz on 23/07/2023.

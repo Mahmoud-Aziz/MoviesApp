@@ -27,7 +27,7 @@ open class BaseViewController: UIViewController {
   }
   
   // MARK: - Handle State Changes
-  open func handleViewModelRequestFailedState(_: String) {}
+  open func handleViewModelFailureState(error: ErrorPresentable) {}
   open func handleViewModelCompletedState() {}
   open func handleViewModelReloadState() {}
   func handleViewModelLoadingState(_ state: State) {
@@ -43,7 +43,7 @@ extension BaseViewController: Stateful {
     case .completed:
       handleViewModelCompletedState()
     case let .failed(error):
-      handleViewModelRequestFailedState(error)
+      handleViewModelFailureState(error: error)
     case .reload:
       handleViewModelReloadState()
     case let .navigate(destination):

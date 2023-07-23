@@ -8,8 +8,6 @@
 
 import Foundation
 
-typealias ResultClosure<T: Decodable> = (Result<T, APIError>) -> Void
-
 // MARK: - APIService
 protocol APIServiceProtocol {
   func sendRequest<T: Decodable>(decodable: T.Type, request: URLRequest, completion: @escaping ResultClosure<T>)
@@ -24,8 +22,20 @@ class APIService: APIServiceProtocol {
   }
   
   func sendRequest<T: Decodable>(decodable: T.Type, request: URLRequest, completion: @escaping ResultClosure<T>) {
-    let task = session.dataTask(with: request) { data, _, error in
+    let task = session.dataTask(with: request) { data, response, error in
       DispatchQueue.main.async {
+        guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
+          completion(.failure(APIError.failedRequest))
+          return
+        }
+        guard statusCode != 401 else {
+          completion(.failure(APIError.failureStatusCode))
+          return
+        }
+        guard (200 ..< 300).contains(statusCode) else {
+          completion(.failure(APIError.failureStatusCode))
+          return
+        }
         if error != nil {
           completion(.failure(APIError.failedRequest))
           return
