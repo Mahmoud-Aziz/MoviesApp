@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="MoviesApp" customModuleProvider="target">
             <connections>
+                <outlet property="failureView" destination="NK1-dp-fqO" id="x8R-cL-T1J"/>
                 <outlet property="homeSearchBar" destination="7iF-rr-Iyd" id="c4s-qS-2td"/>
                 <outlet property="homeTableView" destination="D5b-FO-et0" id="d2O-yC-BwU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -21,38 +22,46 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fp2-mp-JaS">
-                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-                    <subviews>
-                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="7iF-rr-Iyd">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="tOl-am-zfW"/>
-                            </constraints>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="-1" id="rQF-m6-UPq"/>
-                            </connections>
-                        </searchBar>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="D5b-FO-et0">
-                            <rect key="frame" x="0.0" y="50" width="393" height="709"/>
-                            <color key="backgroundColor" systemColor="systemGray6Color"/>
-                            <connections>
-                                <outlet property="dataSource" destination="-1" id="Buh-aG-9ZK"/>
-                                <outlet property="delegate" destination="-1" id="0rf-rx-kTE"/>
-                                <outlet property="prefetchDataSource" destination="-1" id="4kH-xK-TQ9"/>
-                            </connections>
-                        </tableView>
-                    </subviews>
-                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NK1-dp-fqO" customClass="FailureView" customModule="MoviesApp" customModuleProvider="target">
+                    <rect key="frame" x="71.666666666666686" y="301" width="250" height="250"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" placeholder="YES" id="bm9-y8-KVa"/>
+                        <constraint firstAttribute="width" constant="250" placeholder="YES" id="cFt-li-41g"/>
+                    </constraints>
+                </view>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="7iF-rr-Iyd">
+                    <rect key="frame" x="0.0" y="59" width="393" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="tOl-am-zfW"/>
+                    </constraints>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="rQF-m6-UPq"/>
+                    </connections>
+                </searchBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="D5b-FO-et0">
+                    <rect key="frame" x="0.0" y="109" width="393" height="709"/>
+                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Buh-aG-9ZK"/>
+                        <outlet property="delegate" destination="-1" id="0rf-rx-kTE"/>
+                        <outlet property="prefetchDataSource" destination="-1" id="4kH-xK-TQ9"/>
+                    </connections>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Fp2-mp-JaS" secondAttribute="trailing" id="GYA-gt-XCn"/>
-                <constraint firstItem="Fp2-mp-JaS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Soh-Pb-fj0"/>
-                <constraint firstItem="Fp2-mp-JaS" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="dVE-wP-lAe"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Fp2-mp-JaS" secondAttribute="bottom" id="tmW-ZQ-Qqf"/>
+                <constraint firstItem="NK1-dp-fqO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="1qU-aB-RN3"/>
+                <constraint firstItem="D5b-FO-et0" firstAttribute="top" secondItem="7iF-rr-Iyd" secondAttribute="bottom" id="QC5-j3-xAm"/>
+                <constraint firstItem="7iF-rr-Iyd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Rhv-pB-Xr3"/>
+                <constraint firstItem="7iF-rr-Iyd" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="X0F-5c-Biv"/>
+                <constraint firstItem="NK1-dp-fqO" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="fks-Hp-oIk"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="D5b-FO-et0" secondAttribute="bottom" id="iw2-94-VuV"/>
+                <constraint firstItem="D5b-FO-et0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jAm-nN-weJ"/>
+                <constraint firstItem="D5b-FO-et0" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="rrE-0V-9CM"/>
+                <constraint firstItem="7iF-rr-Iyd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="uTE-K7-mrx"/>
             </constraints>
             <point key="canvasLocation" x="132" y="-11"/>
         </view>

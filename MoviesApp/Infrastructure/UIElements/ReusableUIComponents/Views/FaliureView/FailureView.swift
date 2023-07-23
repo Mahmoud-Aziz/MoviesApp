@@ -1,5 +1,5 @@
 //
-//  LeadingInfoView.swift
+//  FailureView.swift
 //  MoviesApp
 //
 //  Created by Mahmoud Aziz on 23/07/2023.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-public class LeadingInfoView: UIView {
+public class FailureView: UIView {
 
-  @IBOutlet private weak var titleLabel: UILabel!
+  @IBOutlet private weak var imageView: UIImageView!
   @IBOutlet private weak var descriptionLabel: UILabel!
 
   override public init(frame: CGRect) {
@@ -23,8 +23,8 @@ public class LeadingInfoView: UIView {
     loadfromNib()
   }
 
-  public func configure(title: String?, description: String?) {
-    titleLabel.text = title
+  public func configure(image: UIImage?, description: String?) {
+    imageView.image = image
     descriptionLabel.text = description
   }
 }

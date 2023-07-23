@@ -24,17 +24,13 @@ struct PopularMovies: Decodable {
 
 // MARK: - Movies
 struct Movie: Decodable {
-  let genreIDS: [Int]?
   let id: Int
   let title: String
-  let posterPath: String?
-  private let releaseDate: String?
-  private let voteAverage: Double?
+  let releaseDate: String?
+  let voteAverage: Double?
   
   enum CodingKeys: String, CodingKey {
-    case genreIDS = "genre_ids"
     case id
-    case posterPath = "poster_path"
     case releaseDate = "release_date"
     case title
     case voteAverage = "vote_average"

@@ -12,13 +12,13 @@ class HomeViewModel: BaseViewModel {
   // MARK: - Use Cases
   private var getPopularMoviesUseCase: GetPopularMoviesUseCaseProtocol
   private var searchMoviesUseCase: SearchMoviesUseCaseProtocol
-
+  
   // MARK: - Private Properties
-  private var movies: [Movie]?
-  private var currentPage = 1
-  private var totalPages = 0
-  private var searchFilteredResults: [Movie]?
-
+  private(set) var movies: [Movie]?
+  private(set) var currentPage = 1
+  private(set) var totalPages = 0
+  private(set) var searchFilteredResults: [Movie]?
+  
   // MARK: - Init
   init(getPopularMoviesUseCase: GetPopularMoviesUseCaseProtocol = GetPopularMoviesUseCase(),
        searchMoviesUseCase: SearchMoviesUseCaseProtocol = SearchMoviesUseCase()) {
@@ -40,7 +40,7 @@ private extension HomeViewModel {
         self.totalPages = popularMovies.totalPages
         self.state?.update(newState: .reload)
       case .failure:
-        self.state?.update(newState: .completed)
+        self.state?.update(newState: .failed(HomeError.fetchingPopularMoviesFailed))
       }
     }
   }
@@ -51,12 +51,15 @@ private extension HomeViewModel {
       guard let self else { return }
       switch result {
       case .success(let popularMovies):
+        guard !popularMovies.movies.isEmpty else {
+          self.state?.update(newState: .failed(HomeError.searchFailed))
+          return
+        }
         self.searchFilteredResults = popularMovies.movies.filter { $0.title.lowercased().contains(query) }
         self.totalPages = popularMovies.totalPages
         self.state?.update(newState: .reload)
       case .failure:
-        self.searchFilteredResults = self.movies
-        self.state?.update(newState: .completed)
+        self.state?.update(newState: .failed(HomeError.searchFailed))
       }
     }
   }
@@ -91,7 +94,7 @@ extension HomeViewModel {
       }
     }
   }
-
+  
   func getItem(at indexPath: IndexPath) -> Movie? {
     guard let searchFilteredResults else { return nil }
     return searchFilteredResults[indexPath.row]

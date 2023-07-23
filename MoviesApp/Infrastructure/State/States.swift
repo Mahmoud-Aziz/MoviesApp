@@ -14,7 +14,7 @@ public enum State {
   case loading
   case reload
   case completed
-  case failed(String)
+  case failed(ErrorPresentable)
   case navigate(RouteProtocol)
 }
 
