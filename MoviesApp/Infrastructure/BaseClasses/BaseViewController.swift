@@ -37,7 +37,7 @@ open class BaseViewController: UIViewController {
 
 // MARK: - Stateful
 extension BaseViewController: Stateful {
-  public func mutate(newState: State) {
+  public func update(newState: State) {
     handleViewModelLoadingState(newState)
     switch newState {
     case .completed:

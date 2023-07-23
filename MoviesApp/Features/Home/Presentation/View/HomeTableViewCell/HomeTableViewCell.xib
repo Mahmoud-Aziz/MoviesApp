@@ -21,73 +21,38 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2f-Eb-7zj">
                         <rect key="frame" x="0.0" y="0.0" width="519" height="245"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DJD-Dp-nmA">
-                                <rect key="frame" x="0.0" y="0.0" width="519" height="245"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nrO-0X-EPe">
+                                <rect key="frame" x="8" y="8" width="503" height="100"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lXT-iD-Vb7">
-                                        <rect key="frame" x="0.0" y="0.0" width="427" height="245"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="osW-4A-cDM">
+                                        <rect key="frame" x="0.0" y="0.0" width="503" height="50"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nrO-0X-EPe">
-                                                <rect key="frame" x="8" y="8" width="411" height="100"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="osW-4A-cDM">
-                                                        <rect key="frame" x="0.0" y="0.0" width="411" height="50"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzd-U1-5I9" customClass="TitleLabel" customModule="MoviesApp" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="411" height="28.666666666666668"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pl7-OL-jhx" customClass="SubtitleLabel" customModule="MoviesApp" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="29.666666666666664" width="411" height="20.333333333333336"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62C-Xw-Td2" customClass="LeadingInfoView" customModule="MoviesApp" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="50" width="411" height="50"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    </view>
-                                                </subviews>
-                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzd-U1-5I9" customClass="TitleLabel" customModule="MoviesApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="503" height="28.666666666666668"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pl7-OL-jhx" customClass="SubtitleLabel" customModule="MoviesApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="29.666666666666664" width="503" height="20.333333333333336"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="nrO-0X-EPe" secondAttribute="trailing" constant="8" id="ChL-KY-b6f"/>
-                                            <constraint firstItem="nrO-0X-EPe" firstAttribute="top" secondItem="lXT-iD-Vb7" secondAttribute="top" constant="8" id="giS-IV-bCf"/>
-                                            <constraint firstItem="nrO-0X-EPe" firstAttribute="leading" secondItem="lXT-iD-Vb7" secondAttribute="leading" constant="8" id="ymt-YV-4Rl"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgP-XU-F7I">
-                                        <rect key="frame" x="427" y="0.0" width="92" height="245"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UVu-T5-Q9g">
-                                                <rect key="frame" x="0.0" y="54.666666666666671" width="92" height="136.66666666666669"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="138" id="Ezy-67-N7R"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="92" id="0MB-gv-Z7j"/>
-                                            <constraint firstItem="UVu-T5-Q9g" firstAttribute="centerY" secondItem="jgP-XU-F7I" secondAttribute="centerY" id="Uap-pA-ffw"/>
-                                            <constraint firstItem="UVu-T5-Q9g" firstAttribute="leading" secondItem="jgP-XU-F7I" secondAttribute="leading" id="mbb-1Z-Bad"/>
-                                            <constraint firstAttribute="trailing" secondItem="UVu-T5-Q9g" secondAttribute="trailing" id="oWF-bx-KKZ"/>
-                                        </constraints>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62C-Xw-Td2" customClass="LeadingInfoView" customModule="MoviesApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="503" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="DJD-Dp-nmA" firstAttribute="top" secondItem="f2f-Eb-7zj" secondAttribute="top" id="GTM-JF-PGh"/>
-                            <constraint firstAttribute="bottom" secondItem="DJD-Dp-nmA" secondAttribute="bottom" id="IJS-WY-vXA"/>
-                            <constraint firstItem="DJD-Dp-nmA" firstAttribute="leading" secondItem="f2f-Eb-7zj" secondAttribute="leading" id="elS-GJ-jq2"/>
-                            <constraint firstAttribute="trailing" secondItem="DJD-Dp-nmA" secondAttribute="trailing" id="fbA-Gj-B88"/>
+                            <constraint firstAttribute="trailing" secondItem="nrO-0X-EPe" secondAttribute="trailing" constant="8" id="1fQ-cc-r9h"/>
+                            <constraint firstItem="nrO-0X-EPe" firstAttribute="top" secondItem="f2f-Eb-7zj" secondAttribute="top" constant="8" id="ROU-v9-xe7"/>
+                            <constraint firstItem="nrO-0X-EPe" firstAttribute="leading" secondItem="f2f-Eb-7zj" secondAttribute="leading" constant="8" id="jl2-ko-408"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -103,16 +68,14 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="containerView" destination="f2f-Eb-7zj" id="R6P-nf-THb"/>
-                <outlet property="posterImageView" destination="UVu-T5-Q9g" id="NuS-9a-dVI"/>
-                <outlet property="ratingInfoView" destination="62C-Xw-Td2" id="05j-e5-HEf"/>
                 <outlet property="releaseYearLabel" destination="pl7-OL-jhx" id="SsS-4j-4e9"/>
                 <outlet property="titleLabel" destination="rzd-U1-5I9" id="0KJ-Vo-yVa"/>
+                <outlet property="voteAverageInfoView" destination="62C-Xw-Td2" id="qPF-H9-Okz"/>
             </connections>
             <point key="canvasLocation" x="281.67938931297709" y="59.507042253521128"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="square.and.arrow.up.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

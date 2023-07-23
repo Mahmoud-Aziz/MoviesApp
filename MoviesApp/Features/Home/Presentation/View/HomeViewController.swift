@@ -11,6 +11,7 @@ import UIKit
 // MARK: - HomeViewController
 class HomeViewController: BaseViewController {
   // MARK: - IBOutlet
+  @IBOutlet private weak var homeSearchBar: UISearchBar!
   @IBOutlet private weak var homeTableView: UITableView!
   
   // MARK: - Private Properties
@@ -31,7 +32,8 @@ class HomeViewController: BaseViewController {
     super.viewDidLoad()
     bindViewModelState(viewModel)
     setupView()
-    viewModel.getData()
+    viewModel.resetSearch()
+    viewModel.performOnLoad()
   }
   
   override func handleViewModelReloadState() {
@@ -54,7 +56,7 @@ extension HomeViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    .init(150)
+    .init(110)
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,3 +75,10 @@ extension HomeViewController: UITableViewDataSourcePrefetching {
 
 // MARK: - UITableViewDelegate
 extension HomeViewController: UITableViewDelegate {}
+
+// MARK: UISearchBarDelegate
+extension HomeViewController: UISearchBarDelegate {
+  public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    viewModel.search(query: searchBar.text)
+  }
+}
