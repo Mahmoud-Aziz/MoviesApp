@@ -8,30 +8,32 @@
 
 import UIKit
 
-public protocol ErrorPresentable {
-  var message: String { get }
-  var image: UIImage? { get }
-}
-
 enum HomeError: ErrorPresentable {
   case searchFailed
   case fetchingPopularMoviesFailed
-  
+  case fetchingMovieDetailsFailed
+
   var message: String {
     switch self {
     case .searchFailed:
       return "Sorry, unexpected error occurred! please try again"
     case .fetchingPopularMoviesFailed:
       return "Search query doesn't match any of our records, please try again with a different one"
+    case .fetchingMovieDetailsFailed:
+      return "Sorry, we couldn't get details for this movie :("
     }
   }
   
   var image: UIImage? {
+    var image: UIImage?
     switch self {
     case .searchFailed:
-      return .notFound
+      image = .notFound
     case .fetchingPopularMoviesFailed:
-      return .failed
+      image = .failed
+    case .fetchingMovieDetailsFailed:
+      break
     }
+    return image
   }
 }
