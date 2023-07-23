@@ -11,18 +11,19 @@ import Foundation
 // MARK: - SimilarMovies
 struct SimilarMovies: Decodable {
   let page: Int
-  let results: [SimilarMovie]
+  let movies: [SimilarMovie]
   let totalPages, totalResults: Int
   
   enum CodingKeys: String, CodingKey {
-    case page, results
+    case page
+    case movies = "results"
     case totalPages = "total_pages"
     case totalResults = "total_results"
   }
 }
 
 // MARK: - SimilarMovie
-struct SimilarMovie: Decodable {
+struct SimilarMovie: Decodable, Hashable {
   let adult: Bool
   let backdropPath: String?
   let genreIDS: [Int]

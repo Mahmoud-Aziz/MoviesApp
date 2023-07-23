@@ -14,7 +14,7 @@ struct MovieCast: Decodable {
 }
 
 // MARK: - Cast
-struct Cast: Decodable {
+struct Cast: Decodable, Hashable {
   let name: String
   let popularity: Double
   
@@ -25,8 +25,8 @@ struct Cast: Decodable {
 }
 
 // MARK: - Crew
-struct Crew: Decodable {
-  let name: Bool
+struct Crew: Decodable, Hashable {
+  let name: String
   let popularity: Double
   let department: String
   

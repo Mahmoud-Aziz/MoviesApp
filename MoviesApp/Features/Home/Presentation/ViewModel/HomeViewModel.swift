@@ -12,9 +12,9 @@ class HomeViewModel: BaseViewModel {
   // MARK: - Use Cases
   private var getPopularMoviesUseCase: GetPopularMoviesUseCaseProtocol
   private var searchMoviesUseCase: SearchMoviesUseCaseProtocol
-  private var movieDetailsUseCase: MovieDetailsUseCaseProtocol
+  private var getMovieDetailsUseCase: GetMovieDetailsUseCaseProtocol
   private var environment: AppEnvironmentProtocol
-
+  
   // MARK: - Private Properties
   private(set) var movies: [Movie]?
   private(set) var currentPage = 1
@@ -24,11 +24,11 @@ class HomeViewModel: BaseViewModel {
   // MARK: - Init
   init(getPopularMoviesUseCase: GetPopularMoviesUseCaseProtocol = GetPopularMoviesUseCase(),
        searchMoviesUseCase: SearchMoviesUseCaseProtocol = SearchMoviesUseCase(),
-       movieDetailsUseCase: MovieDetailsUseCaseProtocol = MovieDetailsUseCase(),
+       getMovieDetailsUseCase: GetMovieDetailsUseCaseProtocol = GetMovieDetailsUseCase(),
        environment: AppEnvironmentProtocol = AppEnvironment()) {
     self.getPopularMoviesUseCase = getPopularMoviesUseCase
     self.searchMoviesUseCase = searchMoviesUseCase
-    self.movieDetailsUseCase = movieDetailsUseCase
+    self.getMovieDetailsUseCase = getMovieDetailsUseCase
     self.environment = ServiceLocator.shared.environment
     super.init()
   }
@@ -66,6 +66,17 @@ private extension HomeViewModel {
         self.state?.update(newState: .reload)
       case .failure:
         self.state?.update(newState: .failed(HomeError.searchFailed))
+      }
+    }
+  }
+  
+  func getMovieDetails(id: Int) {
+    getMovieDetailsUseCase.execute(id: id) { [weak self] result in
+      switch result {
+      case .success(let movieDetails):
+        self?.state?.update(newState: .navigate(HomeRouter.details(movieDetails)))
+      case .failure(let error):
+        self?.state?.update(newState: .completed)
       }
     }
   }
@@ -110,9 +121,7 @@ extension HomeViewModel {
     guard let movies else { return }
     let id = movies[index.row].id
     state?.update(newState: .loading)
-    movieDetailsUseCase.execute(id: id) { details, similars, cast in
-    
-    }
+    getMovieDetails(id: id)
   }
   
   var itemsCount: Int {

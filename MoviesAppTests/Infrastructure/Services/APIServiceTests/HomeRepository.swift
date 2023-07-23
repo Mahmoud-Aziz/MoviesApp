@@ -12,6 +12,7 @@ import Foundation
 protocol HomeRepositoryProtocol {
   func getPopularMovies(pageCount: Int, completion: @escaping ResultClosure<PopularMovies>)
   func searchMovies(query: String, completion: @escaping ResultClosure<PopularMovies>)
+  func getMovieDetails(id: Int, completion: @escaping ResultClosure<MovieDetails>)
 }
 
 // MARK: - HomeRepository
@@ -38,5 +39,13 @@ class HomeRepository: HomeRepositoryProtocol {
       .build()
     
     service.sendRequest(decodable: PopularMovies.self, request: request, completion: completion)
+  }
+  
+  func getMovieDetails(id: Int, completion: @escaping ResultClosure<MovieDetails>) {
+    let request = APIBuilder()
+      .setPath(.movie, suffixes: [String(id)])
+      .build()
+    
+    service.sendRequest(decodable: MovieDetails.self, request: request, completion: completion)
   }
 }

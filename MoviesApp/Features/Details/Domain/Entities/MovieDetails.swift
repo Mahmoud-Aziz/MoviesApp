@@ -10,6 +10,7 @@ import Foundation
 
 // MARK: - MovieDetails
 struct MovieDetails: Decodable {
+  let id: Int
   let adult: Bool
   let genres: [Genre]
   let originalLanguage, overview: String
@@ -21,9 +22,11 @@ struct MovieDetails: Decodable {
   let spokenLanguages: [SpokenLanguage]
   let status, title: String
   let video: Bool
-  let voteAverage, voteCount: Int
+  let voteAverage: Double
+  let voteCount: Int
   
   enum CodingKeys: String, CodingKey {
+    case id 
     case adult
     case genres
     case originalLanguage = "original_language"

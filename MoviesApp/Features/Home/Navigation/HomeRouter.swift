@@ -9,12 +9,13 @@
 import UIKit
 
 enum HomeRouter: RouteProtocol {
-case details
+  case details(MovieDetails)
   
   var destination: UIViewController {
     switch self {
-    case .details:
-      return DetailsViewController()
+    case let .details(movieDetails):
+      let viewModel = DetailsViewModel(movieDetails: movieDetails)
+      return DetailsViewController(viewModel: viewModel)
     }
   }
   
