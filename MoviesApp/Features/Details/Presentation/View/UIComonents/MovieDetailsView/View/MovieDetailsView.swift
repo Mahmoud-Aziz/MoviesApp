@@ -9,13 +9,17 @@
 import UIKit
 
 class MovieDetailsView: UIView {
+  // MARK: - IBOutlet
   @IBOutlet private weak var posterImageView: UIImageView!
   @IBOutlet private weak var headerInfoView: VerticalInfoView!
+  @IBOutlet private weak var taglineInfoView: LeadingInfoView!
   @IBOutlet private weak var voteAverageInfoView: LeadingInfoView!
-  @IBOutlet private weak var revenueLabel: DescriptionLabel!
+  @IBOutlet private weak var revenueInfoView: LeadingInfoView!
   @IBOutlet private weak var overviewLabel: DescriptionLabel!
+  @IBOutlet private weak var overviewLabelHeightConstraint: NSLayoutConstraint!
   
-  override public init(frame: CGRect) {
+  // MARK: - Init
+  override init(frame: CGRect) {
     super.init(frame: frame)
     loadfromNib()
   }
@@ -25,23 +29,21 @@ class MovieDetailsView: UIView {
     loadfromNib()
   }
   
-  
+  // MARK: - Configure View
   func configure(with data: MovieDetailsViewData) {
     headerInfoView.configure(title: data.title, subtitle: data.subtitle)
-    posterImageView.image = data.poster
+    taglineInfoView.isHidden = (data.tagline ?? "").isEmpty
+    taglineInfoView.configure(title: data.tagline, description: "movie tagline")
     voteAverageInfoView.configure(title: data.voteAverage, description: "vote average")
     overviewLabel.text = data.overview
-    revenueLabel.text = data.revenue + " " + "revenue"
+    revenueInfoView.configure(title: data.revenue, description: "revenue")
   }
-}
-
-struct MovieDetailsViewData {
-  let title: String
-  let subtitle: String
-  let poster: UIImage
-  let voteAverage: String
-  let overview: String
   
-  let revenue: String
-  let tagline: String
+  func setPosterImage(data: Data) {
+    guard let image = UIImage(data: data) else {
+      posterImageView.image = .placeholder
+      return
+    }
+    posterImageView.image = image
+  }
 }

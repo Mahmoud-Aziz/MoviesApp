@@ -11,6 +11,7 @@ import UIKit
 enum DetailsError: ErrorPresentable {
   case fetchingSimilarMoviesFailed
   case fetchingSimilarMoviesCastsFailed
+  case fetchingMoviePosterFailed
   
   var message: String {
     switch self {
@@ -18,10 +19,17 @@ enum DetailsError: ErrorPresentable {
       return "Sorry, we couldn't get similars for this movie :("
     case .fetchingSimilarMoviesCastsFailed:
       return "Sorry, we couldn't get similars movies casts for this movie :("
+    default:
+      return "Sorry, unexpected error occurred"
     }
   }
   
   var image: UIImage? {
-    .notFound
+    switch self {
+    case .fetchingMoviePosterFailed:
+        return .placeholder
+    default:
+      return .notFound
+    }
   }
 }

@@ -9,3 +9,4 @@
 import Foundation
 
 typealias ResultClosure<T: Decodable> = (Result<T, APIError>) -> Void
+typealias DataClosure = (Data) -> Void

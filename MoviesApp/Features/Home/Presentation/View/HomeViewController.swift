@@ -91,7 +91,7 @@ extension HomeViewController: UITableViewDelegate {
 
 // MARK: UISearchBarDelegate
 extension HomeViewController: UISearchBarDelegate {
-  public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     viewModel.search(query: searchBar.text)
   }
 }

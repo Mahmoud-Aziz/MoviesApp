@@ -13,7 +13,7 @@ class FailureView: UIView {
   @IBOutlet private weak var imageView: UIImageView!
   @IBOutlet private weak var descriptionLabel: UILabel!
 
-  override public init(frame: CGRect) {
+  override init(frame: CGRect) {
     super.init(frame: frame)
     loadfromNib()
   }

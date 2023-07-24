@@ -17,4 +17,5 @@ enum APIError: Error {
   case unreachable
   case cancelled
   case badServerResponse
+  case corruptedURL
 }

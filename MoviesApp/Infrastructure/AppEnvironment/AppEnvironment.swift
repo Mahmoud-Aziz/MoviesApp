@@ -15,6 +15,7 @@ protocol AppEnvironmentProtocol {
   var baseURL: String { get }
   var apiKey: String { get }
   var accessToken: String { get }
+  var imageBaseURL: String { get }
   func string(key: EnvironmentKey) -> String
   func boolean(key: EnvironmentKey) -> Bool
   func fetch(key: String) throws -> String
@@ -76,6 +77,12 @@ extension AppEnvironment: AppEnvironmentProtocol {
   
   var baseURL: String {
     let url = string(key: .baseURL)
+    let schema = string(key: .serviceURLSchema)
+    return schema + "://" + url
+  }
+  
+  var imageBaseURL: String {
+    let url = string(key: .imageBaseURL)
     let schema = string(key: .serviceURLSchema)
     return schema + "://" + url
   }

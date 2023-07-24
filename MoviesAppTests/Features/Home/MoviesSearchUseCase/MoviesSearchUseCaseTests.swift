@@ -71,6 +71,13 @@ class MoviesSearchUseCaseTests: XCTestCase {
   func testDebounce_SearchMovies() {
     // Given
     let debounceExpectation = expectation(description: "Debounce expectation")
+    let movies: [Movie] = [
+      .init(id: 1, title: "The Avengers", releaseDate: "2012-05-04", voteAverage: 7.0),
+      .init(id: 2, title: "Avengers: Age of Ultron", releaseDate: "2015-05-01", voteAverage: 7.6),
+      .init(id: 3, title: "Avengers: Endgame", releaseDate: "2019-04-26", voteAverage: 9.0)
+      ]
+    let popularMovies = PopularMovies(currentPage: 1, movies: movies, totalPages: 1, totalResults: 100)
+    mockUseCase.result = .success(popularMovies)
     
     // When
     debounce?.invalidate()

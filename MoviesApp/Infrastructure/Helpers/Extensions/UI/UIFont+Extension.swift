@@ -10,9 +10,15 @@ import UIKit
 
 extension UIFont {
   enum FontSize: CGFloat {
-    case title = 25
+    case header = 25
+    case title = 20
     case subtitle = 15
     case description = 14
+  }
+  
+  static var header: UIFont {
+    let size = FontSize.header.rawValue
+    return UIFont(name: "Roboto-Regular", size: size) ?? .systemFont(ofSize: size)
   }
   
   static var title: UIFont {
