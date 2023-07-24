@@ -16,7 +16,7 @@ class MockGetSimilarMoviesCastsUseCase: GetSimilarMoviesCastsUseCaseProtocol {
     self.result = result
   }
   
-  func execute(similarMovies: [SimilarMovie], completion: @escaping ResultClosure<[MovieCast]>) {
+  func execute(similarMovies: [Movie], completion: @escaping ResultClosure<[MovieCast]>) {
     completion(result)
   }
 }

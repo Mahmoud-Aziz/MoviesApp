@@ -17,7 +17,7 @@ class DetailsViewModel: BaseViewModel {
   // MARK: - Private Properties
   private let group: DispatchGroup
   private let movieDetails: MovieDetails
-  private(set) var randomFiveSimilarMovies: [SimilarMovie]?
+  private(set) var randomFiveSimilarMovies: [Movie]?
   private(set) var sortedTopFiveActorsCombined: [Cast]?
   private(set) var sortedTopFiveDirectorsCombined: [Crew]?
   
@@ -55,9 +55,7 @@ extension DetailsViewModel {
         let randomFiveSimilarMovies = Array(shuffledSimilarMovies.prefix(min(5, count)))
         self?.randomFiveSimilarMovies = randomFiveSimilarMovies
         self?.getSimilarMoviesCasts(similarMovies: randomFiveSimilarMovies)
-        
-        // TODO: - [Aziz]
-        //        self?.state?.update(newState: .completed)
+        self?.state?.update(newState: .reload)
       case .failure:
         self?.state?.update(newState: .failed(DetailsError.fetchingSimilarMoviesFailed))
       }
@@ -65,7 +63,7 @@ extension DetailsViewModel {
     }
   }
   
-  func getSimilarMoviesCasts(similarMovies: [SimilarMovie]) {
+  func getSimilarMoviesCasts(similarMovies: [Movie]) {
     getSimilarMoviesCastsUseCase.execute(similarMovies: similarMovies) { [weak self] result in
       switch result {
       case .success(let similarMoviesCasts):
@@ -127,8 +125,17 @@ extension DetailsViewModel {
           tagline: movieDetails.tagline)
   }
   
+  var similarMoviesItemsCount: Int {
+    randomFiveSimilarMovies?.count ?? .zero
+  }
+  
   func performOnLoad() {
     getSimilarMovies(group: group)
     downloadMoviePoster(group: group)
+  }
+  
+  func getSimilarMovie(at indexPath: IndexPath) -> Movie? {
+    guard let randomFiveSimilarMovies else { return nil }
+    return randomFiveSimilarMovies[indexPath.row]
   }
 }

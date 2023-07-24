@@ -89,13 +89,13 @@ class GetSimilarMoviesCastsUseCaseTests: XCTestCase {
     sut = nil
   }
   
-  var similarMovies: [SimilarMovie] {
+  var similarMovies: [Movie] {
     [
-      .init(id: 1, releaseDate: "", title: "", voteAverage: 5.5),
-      .init(id: 2, releaseDate: "", title: "", voteAverage: 5.0),
-      .init(id: 3, releaseDate: "", title: "", voteAverage: 6.0),
-      .init(id: 4, releaseDate: "", title: "", voteAverage: 6.5),
-      .init(id: 5, releaseDate: "", title: "", voteAverage: 7.0),
+      .init(id: 1, title: "", releaseDate: "", voteAverage: 5.5),
+      .init(id: 2, title: "", releaseDate: "", voteAverage: 5.0),
+      .init(id: 3, title: "", releaseDate: "", voteAverage: 6.0),
+      .init(id: 4, title: "", releaseDate: "", voteAverage: 6.5),
+      .init(id: 5, title: "", releaseDate: "", voteAverage: 7.0),
     ]
   }
   

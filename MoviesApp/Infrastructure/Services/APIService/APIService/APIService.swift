@@ -47,7 +47,9 @@ class APIService: APIServiceProtocol {
         }
         do {
           let response = try JSONDecoder().decode(decodable.self, from: data)
-          completion(.success(response))
+          DispatchQueue.main.async {
+            completion(.success(response))
+          }
         } catch {
           completion(.failure(APIError.mappingError))
         }

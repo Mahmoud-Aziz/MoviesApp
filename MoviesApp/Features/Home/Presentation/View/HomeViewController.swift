@@ -54,6 +54,7 @@ private extension HomeViewController {
   func setupView() {
     title = viewModel.viewTitle
     homeTableView.registerCellNib(HomeTableViewCell.self)
+    homeTableView.rowHeight = 100
   }
 }
 
@@ -62,11 +63,7 @@ extension HomeViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     viewModel.itemsCount
   }
-  
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    .init(110)
-  }
-  
+ 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell: HomeTableViewCell = tableView.dequeue(cellForItemAt: indexPath)
     cell.configure(with: viewModel.getItem(at: indexPath))

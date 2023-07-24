@@ -21,18 +21,18 @@ class GetSimilarMoviesUseCaseTests: XCTestCase {
   
   func testSimilarMovies_areRandom_CountIs5Only() {
     // Give
-    let movies: [SimilarMovie] = [
-      .init(id: 0, releaseDate: "", title: "", voteAverage: 5.5),
-      .init(id: 0, releaseDate: "", title: "", voteAverage: 5.0),
-      .init(id: 0, releaseDate: "", title: "", voteAverage: 6.0),
-      .init(id: 0, releaseDate: "", title: "", voteAverage: 6.5),
-      .init(id: 0, releaseDate: "", title: "", voteAverage: 7.0),
-      .init(id: 0, releaseDate: "", title: "", voteAverage: 7.6),
-      .init(id: 0, releaseDate: "", title: "", voteAverage: 7.8),
-      .init(id: 0, releaseDate: "", title: "", voteAverage: 8.0),
-      .init(id: 0, releaseDate: "", title: "", voteAverage: 8.5)
+    let movies: [Movie] = [
+      .init(id: 0, title: "", releaseDate: "", voteAverage: 5.5),
+      .init(id: 0, title: "", releaseDate: "", voteAverage: 5.0),
+      .init(id: 0, title: "", releaseDate: "", voteAverage: 6.0),
+      .init(id: 0, title: "", releaseDate: "", voteAverage: 6.5),
+      .init(id: 0, title: "", releaseDate: "", voteAverage: 7.0),
+      .init(id: 0, title: "", releaseDate: "", voteAverage: 7.6),
+      .init(id: 0, title: "", releaseDate: "", voteAverage: 7.8),
+      .init(id: 0, title: "", releaseDate: "", voteAverage: 8.0),
+      .init(id: 0, title: "", releaseDate: "", voteAverage: 8.5)
     ]
-    let similarMovies = SimilarMovies(page: 1, movies: movies, totalPages: 1, totalResults: 10)
+    let similarMovies = SimilarMovies(movies: movies)
     
     // When
     mockSimilarMoviesUseCase = MockGetSimilarMoviesUseCase(result: .success(similarMovies))
@@ -59,11 +59,11 @@ class GetSimilarMoviesUseCaseTests: XCTestCase {
   
   func testSimilarMovies_areRandom_CountWithinSimilarMoviesRange() {
     // Give
-    let movies: [SimilarMovie] = [
-      .init(id: 0, releaseDate: "", title: "", voteAverage: 5.5),
-      .init(id: 0, releaseDate: "", title: "", voteAverage: 5.0),
+    let movies: [Movie] = [
+      .init(id: 0, title: "", releaseDate: "", voteAverage: 5.5),
+      .init(id: 0, title: "", releaseDate: "", voteAverage: 5.0),
     ]
-    let similarMovies = SimilarMovies(page: 1, movies: movies, totalPages: 1, totalResults: 10)
+    let similarMovies = SimilarMovies(movies: movies)
     
     // When
     mockSimilarMoviesUseCase = MockGetSimilarMoviesUseCase(result: .success(similarMovies))

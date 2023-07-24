@@ -23,7 +23,7 @@ struct PopularMovies: Decodable {
 }
 
 // MARK: - Movie
-struct Movie: Decodable {
+struct Movie: Decodable, Hashable {
   let id: Int
   let title: String
   let releaseDate: String?

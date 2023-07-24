@@ -9,8 +9,8 @@
 import Foundation
 
 extension Int {
-  /// Convert Int number that represents amount of money to a string with amount type as suffix
     /*
+  Convert Int number that represents amount of money to a string with amount type as suffix
    Usage example:
    337000000.asCurrencyString // Output: "337 mil"
    1000.asCurrencyString      // Output: "1K"

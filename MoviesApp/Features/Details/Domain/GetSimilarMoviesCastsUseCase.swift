@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - GetSimilarMoviesCastsUseCaseProtocol
 protocol GetSimilarMoviesCastsUseCaseProtocol {
-  func execute(similarMovies: [SimilarMovie], completion: @escaping ResultClosure<[MovieCast]>)
+  func execute(similarMovies: [Movie], completion: @escaping ResultClosure<[MovieCast]>)
 }
 
 // MARK: - DetailsUseCase
@@ -23,7 +23,7 @@ class GetSimilarMoviesCastsUseCase: GetSimilarMoviesCastsUseCaseProtocol {
     self.group = group
   }
   
-  func execute(similarMovies: [SimilarMovie], completion: @escaping ResultClosure<[MovieCast]>) {
+  func execute(similarMovies: [Movie], completion: @escaping ResultClosure<[MovieCast]>) {
     var similarMoviesCasts: [MovieCast]? = []
     let similarMoviesIDs = similarMovies.compactMap({ $0.id })
     for movieID in similarMoviesIDs {
