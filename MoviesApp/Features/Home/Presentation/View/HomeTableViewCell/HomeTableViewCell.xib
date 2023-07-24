@@ -22,17 +22,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="519" height="245"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nrO-0X-EPe">
-                                <rect key="frame" x="8" y="8" width="503" height="88"/>
+                                <rect key="frame" x="8" y="8" width="503" height="85"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXE-kr-iTW" customClass="VerticalInfoView" customModule="MoviesApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="503" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="503" height="47"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="wb6-Ea-WQt"/>
+                                            <constraint firstAttribute="height" constant="47" id="wb6-Ea-WQt"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62C-Xw-Td2" customClass="LeadingInfoView" customModule="MoviesApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="58" width="503" height="30"/>
+                                        <rect key="frame" x="0.0" y="55" width="503" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="aCN-g6-PAg"/>

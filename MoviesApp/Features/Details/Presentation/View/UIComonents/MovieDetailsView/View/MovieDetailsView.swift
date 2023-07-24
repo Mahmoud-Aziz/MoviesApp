@@ -13,7 +13,7 @@ class MovieDetailsView: UIView {
   @IBOutlet private weak var posterImageView: UIImageView!
   @IBOutlet private weak var headerInfoView: VerticalInfoView!
   @IBOutlet private weak var taglineInfoView: LeadingInfoView!
-  @IBOutlet private weak var voteAverageInfoView: LeadingInfoView!
+  @IBOutlet private weak var voteAverageLabel: HeaderLabel!
   @IBOutlet private weak var revenueInfoView: LeadingInfoView!
   @IBOutlet private weak var overviewTextView: UITextView!
 
@@ -32,8 +32,9 @@ class MovieDetailsView: UIView {
   func configure(with data: MovieDetailsViewData) {
     headerInfoView.configure(title: data.title, subtitle: data.subtitle)
     taglineInfoView.isHidden = (data.tagline ?? "").isEmpty
-    taglineInfoView.configure(title: data.tagline, description: "movie tagline")
-    voteAverageInfoView.configure(title: data.voteAverage, description: "vote average")
+    taglineInfoView.configure(title: data.tagline, description: "")
+    voteAverageLabel.text = data.voteAverage
+    voteAverageLabel.textColor = data.voteAverageTextColor
     overviewTextView.text = data.overview
     revenueInfoView.configure(title: data.revenue, description: "revenue")
   }
