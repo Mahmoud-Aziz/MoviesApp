@@ -13,7 +13,7 @@ class VerticalInfoView: UIView {
   @IBOutlet private weak var titleLabel: UILabel!
   @IBOutlet private weak var subtitleLabel: UILabel!
 
-  override public init(frame: CGRect) {
+  override init(frame: CGRect) {
     super.init(frame: frame)
     loadfromNib()
   }

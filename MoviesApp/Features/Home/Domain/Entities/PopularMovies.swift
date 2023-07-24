@@ -40,21 +40,18 @@ struct Movie: Decodable {
 // MARK: - Processing Data
 extension Movie {
   var formattedVoteAverage: String {
-    let textualRate = String(voteAverage ?? 0.0)
-    return voteAverage == .zero ? .notAvailable : textualRate
+    let roundedNumber = String(format: "%.1f", voteAverage ?? 0.0)
+    return Int(roundedNumber) == .zero ? .notAvailable : roundedNumber
   }
   
   var formattedReleaseDate: String {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy/MM/dd"
     guard let releaseDate else {
       return .notAvailable
     }
-    guard let date = dateFormatter.date(from: releaseDate) else {
+    
+    guard let releaseYear = releaseDate.extractedYearFromStringDate else {
       return .notAvailable
     }
-    let calendar = Calendar.current
-    let year = calendar.component(.year, from: date)
-    return String(year)
+    return releaseYear
   }
 }

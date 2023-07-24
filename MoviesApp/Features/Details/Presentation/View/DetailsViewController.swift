@@ -9,10 +9,13 @@
 import UIKit
 
 class DetailsViewController: BaseViewController {
+  // MARK: - IBOutlets
   @IBOutlet private weak var movieDetailsView: MovieDetailsView!
   
+  // MARK: - Private properties
   private let viewModel: DetailsViewModel
   
+  // MARK: - Init
   init(viewModel: DetailsViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
@@ -22,15 +25,24 @@ class DetailsViewController: BaseViewController {
     fatalError("init(coder:) has not been implemented")
   }
   
+  // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    movieDetailsView.configure(with:
-        .init(title: "The last mahmoud on earth", subtitle: "2019 - Realesed",
-              poster: .notFound ?? UIImage(),
-              voteAverage: "0.7",
-              overview: "The last mahmoud on earth The last mahmoud on earth The last mahmoud on earth The last mahmoud on earth The last mahmoud arth The last mahmoud on earth",
-              revenue: "120000000",
-              tagline: ""))
+    setupView()
     viewModel.performOnLoad()
+  }
+}
+
+// MARK: - Setup View
+private extension DetailsViewController {
+  func setupView() {
+    bindPosterImageData()
+    movieDetailsView.configure(with: viewModel.movieDetailsViewData)
+  }
+  
+  func bindPosterImageData() {
+    viewModel.posterImageDataFetched = { [weak self] data in
+      self?.movieDetailsView.setPosterImage(data: data)
+    }
   }
 }

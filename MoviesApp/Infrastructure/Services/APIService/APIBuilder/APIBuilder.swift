@@ -47,12 +47,12 @@ final class APIBuilder {
     return self
   }
   
-  @discardableResult public func setAccessToken() -> Self {
+  @discardableResult func setAccessToken() -> Self {
     headers[.authorization] = accessToken
     return self
   }
   
-  public func setHeader(_ key: HeaderKeys, _ value: String) -> Self {
+  func setHeader(_ key: HeaderKeys, _ value: String) -> Self {
     headers[key] = value
     return self
   }

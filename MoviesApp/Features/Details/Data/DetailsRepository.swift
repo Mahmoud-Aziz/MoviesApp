@@ -12,6 +12,7 @@ import Foundation
 protocol DetailsRepositoryProtocol {
   func getSimilarMovies(id: Int, completion: @escaping ResultClosure<SimilarMovies>)
   func getMovieCast(id: Int, completion: @escaping ResultClosure<MovieCast>)
+  func downloadMoviePoster(url: URL, completion: @escaping ResultClosure<Data>)
 }
 
 // MARK: - DetailsRepository
@@ -21,7 +22,6 @@ class DetailsRepository: DetailsRepositoryProtocol {
   init(service: APIServiceProtocol = APIService()) {
     self.service = service
   }
-  
   
   func getSimilarMovies(id: Int, completion: @escaping ResultClosure<SimilarMovies>) {
     let request = APIBuilder()
@@ -39,5 +39,9 @@ class DetailsRepository: DetailsRepositoryProtocol {
       .build()
     
     service.sendRequest(decodable: MovieCast.self, request: request, completion: completion)
+  }
+  
+  func downloadMoviePoster(url: URL, completion: @escaping ResultClosure<Data>) {
+    service.downloadImage(from: url, completion: completion)
   }
 }

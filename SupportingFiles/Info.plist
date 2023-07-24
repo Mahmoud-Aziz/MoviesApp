@@ -12,10 +12,12 @@
 	<string>$(TMDB_access_token)</string>
 	<key>TMDB_api_key</key>
 	<string>$(TMDB_api_key)</string>
+	<key>TMDB_api_base_url</key>
+	<string>$(TMDB_api_base_url)</string>
+	<key>TMDB_image_base_url</key>
+	<string>$(TMDB_image_base_url)</string>
 	<key>CFBundleDisplayName</key>
 	<string>$(App_name)</string>
-	<key>App_api_base_url</key>
-	<string>$(App_api_base_url)</string>
 	<key>App_api_service_url_schema</key>
 	<string>$(App_api_service_url_schema)</string>
 	<key>App_bundle_identifier</key>
