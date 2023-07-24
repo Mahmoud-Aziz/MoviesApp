@@ -24,10 +24,10 @@
                     <rect key="frame" x="0.0" y="59" width="413" height="1258"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oXj-ZS-QuG" userLabel="ContentView">
-                            <rect key="frame" x="0.0" y="0.0" width="413" height="1200"/>
+                            <rect key="frame" x="0.0" y="0.0" width="413" height="1500"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Wya-b6-8Uc">
-                                    <rect key="frame" x="0.0" y="0.0" width="413" height="1200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="413" height="1500"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jvd-bs-cgr" customClass="MovieDetailsView" customModule="MoviesApp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="413" height="128"/>
@@ -44,7 +44,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgJ-mU-QIM">
-                                            <rect key="frame" x="0.0" y="1072" width="413" height="128"/>
+                                            <rect key="frame" x="0.0" y="1072" width="413" height="428"/>
                                             <color key="backgroundColor" systemColor="systemRedColor"/>
                                         </view>
                                     </subviews>
@@ -56,7 +56,7 @@
                                 <constraint firstAttribute="trailing" secondItem="Wya-b6-8Uc" secondAttribute="trailing" id="GIN-bw-7ti"/>
                                 <constraint firstAttribute="bottom" secondItem="Wya-b6-8Uc" secondAttribute="bottom" id="J5p-1P-PYr"/>
                                 <constraint firstItem="Wya-b6-8Uc" firstAttribute="top" secondItem="oXj-ZS-QuG" secondAttribute="top" id="kFF-Md-fZt"/>
-                                <constraint firstAttribute="height" constant="1200" id="sPz-PX-5wl"/>
+                                <constraint firstAttribute="height" constant="1500" id="sPz-PX-5wl"/>
                             </constraints>
                         </view>
                     </subviews>

@@ -6,7 +6,7 @@
 //  Copyright © 2023 Telda. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct MovieDetailsViewData {
   let title: String
@@ -15,4 +15,18 @@ struct MovieDetailsViewData {
   let overview: String?
   let revenue: String
   let tagline: String?
+  
+  var voteAverageTextColor: UIColor {
+    let voteAverage = Double(voteAverage)
+    var color: UIColor = .clear
+    guard let voteAverage else { return color }
+    if voteAverage <= 5.0 {
+      color = .systemRed
+    } else if voteAverage <= 7.0 {
+      color = .systemYellow
+    } else if voteAverage <= 10.0 {
+      color = .systemGreen
+    }
+    return color
+  }
 }

@@ -29,7 +29,7 @@ class DownloadMoviePosterUseCase: DownloadMoviePosterUseCaseProtocol {
       return
     }
     let imageBaseURL = environment.imageBaseURL
-    let imageSize = TMDBImageSize.w92.rawValue
+    let imageSize = TMDBImageSize.w500.rawValue
     let concatenatedURL = imageBaseURL + imageSize + posterPath
     guard let url = URL(string: concatenatedURL) else {
       completion(.failure(.corruptedURL))
