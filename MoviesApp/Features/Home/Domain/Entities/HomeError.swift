@@ -16,9 +16,9 @@ enum HomeError: ErrorPresentable {
   var message: String {
     switch self {
     case .searchFailed:
-      return "Sorry, unexpected error occurred! please try again"
-    case .fetchingPopularMoviesFailed:
       return "Search query doesn't match any of our records, please try again with a different one"
+    case .fetchingPopularMoviesFailed:
+      return "Sorry, unexpected error occurred! please try again"
     case .fetchingMovieDetailsFailed:
       return "Sorry, we couldn't get details for this movie :("
     }

@@ -4,7 +4,6 @@
 //
 //  Created by Mahmoud Aziz on 22/07/2023.
 //  Copyright © 2023 Telda. All rights reserved.
-// swiftlint:disable force_unwrapping
 
 import Foundation
 @testable import MoviesApp
@@ -156,7 +155,7 @@ class APIServiceTests: XCTestCase {
               "name": "Telda"
               "employees": 100
           }
-          """.data(using: .utf8)! // Missing comma after "name" key
+          """.data(using: .utf8)!
     
     MockURLProtocol.requestHandler = { request in
       guard let url = request.url, url == self.baseURL else {
@@ -189,7 +188,7 @@ class APIServiceTests: XCTestCase {
               "name": 123,
               "employees": "100"
           }
-          """.data(using: .utf8)! // name is not a String, employees is not an Int
+          """.data(using: .utf8)!
     
     MockURLProtocol.requestHandler = { request in
       guard let url = request.url, url == self.baseURL else {
@@ -222,5 +221,3 @@ class APIServiceTests: XCTestCase {
     return request
   }
 }
-
-// swiftlint:enable force_unwrapping

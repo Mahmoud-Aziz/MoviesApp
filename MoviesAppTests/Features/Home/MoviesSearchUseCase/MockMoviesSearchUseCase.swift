@@ -9,13 +9,11 @@
 import Foundation
 
 class MockMoviesSearchUseCase: SearchMoviesUseCaseProtocol {
-  var mockResult: PopularMovies!
-  var isSuccessful: Bool = false
-  var mockError: APIError = .failedRequest
   var executeCallCount: Int = .zero
   var lastQuery: String!
-
+  var result: Result<PopularMovies, APIError>!
+  
   func execute(query: String, completion: @escaping ResultClosure<PopularMovies>) {
-    isSuccessful ? completion(.success(mockResult)) : completion(.failure(mockError))
+    completion(result)
   }
 }

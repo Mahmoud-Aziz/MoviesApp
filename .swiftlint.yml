@@ -1,6 +1,7 @@
 excluded:
   - Pods
-
+  - MoviesAppTests/*
+  
 disabled_rules:
   - trailing_whitespace
   - inclusive_language

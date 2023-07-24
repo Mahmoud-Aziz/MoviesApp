@@ -26,8 +26,8 @@ struct PopularMovies: Decodable {
 struct Movie: Decodable {
   let id: Int
   let title: String
-  private let releaseDate: String?
-  private let voteAverage: Double?
+  let releaseDate: String?
+  let voteAverage: Double?
   
   enum CodingKeys: String, CodingKey {
     case id

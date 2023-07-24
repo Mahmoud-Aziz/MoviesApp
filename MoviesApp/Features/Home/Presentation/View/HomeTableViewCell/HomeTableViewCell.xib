@@ -21,29 +21,22 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2f-Eb-7zj">
                         <rect key="frame" x="0.0" y="0.0" width="519" height="245"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nrO-0X-EPe">
-                                <rect key="frame" x="8" y="8" width="503" height="100"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nrO-0X-EPe">
+                                <rect key="frame" x="8" y="8" width="503" height="88"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="osW-4A-cDM">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXE-kr-iTW" customClass="VerticalInfoView" customModule="MoviesApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="503" height="50"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzd-U1-5I9" customClass="TitleLabel" customModule="MoviesApp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="503" height="28.666666666666668"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pl7-OL-jhx" customClass="SubtitleLabel" customModule="MoviesApp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="29.666666666666664" width="503" height="20.333333333333336"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="wb6-Ea-WQt"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62C-Xw-Td2" customClass="LeadingInfoView" customModule="MoviesApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="503" height="50"/>
+                                        <rect key="frame" x="0.0" y="58" width="503" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="aCN-g6-PAg"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -68,8 +61,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="containerView" destination="f2f-Eb-7zj" id="R6P-nf-THb"/>
-                <outlet property="releaseYearLabel" destination="pl7-OL-jhx" id="SsS-4j-4e9"/>
-                <outlet property="titleLabel" destination="rzd-U1-5I9" id="0KJ-Vo-yVa"/>
+                <outlet property="movieTitleAndYearInfoView" destination="aXE-kr-iTW" id="e7r-SS-THm"/>
                 <outlet property="voteAverageInfoView" destination="62C-Xw-Td2" id="qPF-H9-Okz"/>
             </connections>
             <point key="canvasLocation" x="281.67938931297709" y="59.507042253521128"/>

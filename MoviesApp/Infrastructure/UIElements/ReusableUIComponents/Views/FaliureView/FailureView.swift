@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class FailureView: UIView {
+class FailureView: UIView {
 
   @IBOutlet private weak var imageView: UIImageView!
   @IBOutlet private weak var descriptionLabel: UILabel!
@@ -18,12 +18,12 @@ public class FailureView: UIView {
     loadfromNib()
   }
 
-  public required init?(coder: NSCoder) {
+  required init?(coder: NSCoder) {
     super.init(coder: coder)
     loadfromNib()
   }
 
-  public func configure(image: UIImage?, description: String?) {
+  func configure(image: UIImage?, description: String?) {
     imageView.image = image
     descriptionLabel.text = description
   }
