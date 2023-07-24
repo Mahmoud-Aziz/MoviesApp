@@ -1,17 +1,17 @@
 //
-//  LeadingInfoView.swift
+//  VerticalInfoView.swift
 //  MoviesApp
 //
-//  Created by Mahmoud Aziz on 23/07/2023.
+//  Created by Mahmoud Aziz on 24/07/2023.
 //  Copyright © 2023 Telda. All rights reserved.
 //
 
 import UIKit
 
-class LeadingInfoView: UIView {
+class VerticalInfoView: UIView {
 
   @IBOutlet private weak var titleLabel: UILabel!
-  @IBOutlet private weak var descriptionLabel: UILabel!
+  @IBOutlet private weak var subtitleLabel: UILabel!
 
   override public init(frame: CGRect) {
     super.init(frame: frame)
@@ -23,8 +23,8 @@ class LeadingInfoView: UIView {
     loadfromNib()
   }
 
-  func configure(title: String?, description: String?) {
+  func configure(title: String?, subtitle: String?) {
     titleLabel.text = title
-    descriptionLabel.text = description
+    subtitleLabel.text = subtitle
   }
 }

@@ -76,6 +76,7 @@ private extension HomeViewModel {
       case .success(let movieDetails):
         self?.state?.update(newState: .navigate(HomeRouter.details(movieDetails)))
       case .failure(let error):
+        // TODO: - [Aziz] 
         self?.state?.update(newState: .completed)
       }
     }

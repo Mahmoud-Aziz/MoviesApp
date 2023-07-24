@@ -4,7 +4,6 @@
 //
 //  Created by Mahmoud Aziz on 23/07/2023.
 //  Copyright © 2023 Telda. All rights reserved.
-// swiftlint:disable force_unwrapping
 
 import Foundation
 import XCTest
@@ -18,10 +17,9 @@ class MoviesSearchUseCaseTests: XCTestCase {
   
   override func setUp() {
     super.setUp()
-    
-    // Set up the mock use case and inject it into the view model
     mockUseCase = MockMoviesSearchUseCase()
     sut = HomeViewModel(searchMoviesUseCase: mockUseCase)
+    
   }
   
   override func tearDown() {
@@ -37,10 +35,9 @@ class MoviesSearchUseCaseTests: XCTestCase {
       .init(id: 1, title: "The Avengers", releaseDate: "2012-05-04", voteAverage: 7.0),
       .init(id: 2, title: "Avengers: Age of Ultron", releaseDate: "2015-05-01", voteAverage: 7.6),
       .init(id: 3, title: "Avengers: Endgame", releaseDate: "2019-04-26", voteAverage: 9.0)
-    ]
+      ]
     let popularMovies = PopularMovies(currentPage: 1, movies: movies, totalPages: 1, totalResults: 100)
-    mockUseCase.mockResult = popularMovies
-    mockUseCase.isSuccessful = true
+    mockUseCase.result = .success(popularMovies)
     
     // When
     sut.search(query: query)
@@ -53,20 +50,18 @@ class MoviesSearchUseCaseTests: XCTestCase {
   func testSearchMovies_Failure() {
     // Given
     let query = "Non-existing-movie"
-    mockUseCase.mockError = .mappingError
-    // When
     let searchExpectation = expectation(description: "search expectation")
+
+    mockUseCase.result = .failure(.failedRequest)
     
-    // Call method 1
+    // When
     sut.performOnLoad()
     
-    // Wait for method 2 expectation to be fulfilled
     DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
       self?.sut.search(query: query)
       searchExpectation.fulfill()
     }
     
-    // Wait for all expectations to be fulfilled before the test case finishes
     wait(for: [searchExpectation], timeout: 5.0)
     
     // Then
@@ -105,4 +100,3 @@ class MoviesSearchUseCaseTests: XCTestCase {
     waitForExpectations(timeout: 1, handler: nil)
   }
 }
-// swiftlint:enable force_unwrapping

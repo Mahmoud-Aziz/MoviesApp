@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,28 +20,30 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SR1-n0-0Q2">
-                    <rect key="frame" x="0.0" y="0.0" width="467" height="107"/>
+                    <rect key="frame" x="0.0" y="0.0" width="467" height="30"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycR-aJ-sxL" customClass="TitleLabel" customModule="MoviesApp" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="60" height="107"/>
+                            <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="To7-77-7Sq" customClass="DescriptionLabel" customModule="MoviesApp" customModuleProvider="target">
-                            <rect key="frame" x="68" y="0.0" width="399" height="107"/>
+                            <rect key="frame" x="68" y="0.0" width="399" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="r8R-4r-OjQ"/>
+                    </constraints>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="SR1-n0-0Q2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="DSA-lh-7g9"/>
-                <constraint firstAttribute="bottom" secondItem="SR1-n0-0Q2" secondAttribute="bottom" id="djx-az-9KS"/>
                 <constraint firstAttribute="trailing" secondItem="SR1-n0-0Q2" secondAttribute="trailing" id="kwZ-5G-iQd"/>
                 <constraint firstItem="SR1-n0-0Q2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rh2-X8-ZPa"/>
             </constraints>
@@ -50,9 +51,4 @@
             <point key="canvasLocation" x="225.19083969465649" y="-97.535211267605632"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

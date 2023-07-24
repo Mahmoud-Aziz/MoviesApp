@@ -9,6 +9,7 @@
 import UIKit
 
 class DetailsViewController: BaseViewController {
+  @IBOutlet private weak var movieDetailsView: MovieDetailsView!
   
   private let viewModel: DetailsViewModel
   
@@ -23,6 +24,13 @@ class DetailsViewController: BaseViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    movieDetailsView.configure(with:
+        .init(title: "The last mahmoud on earth", subtitle: "2019 - Realesed",
+              poster: .notFound ?? UIImage(),
+              voteAverage: "0.7",
+              overview: "The last mahmoud on earth The last mahmoud on earth The last mahmoud on earth The last mahmoud on earth The last mahmoud arth The last mahmoud on earth",
+              revenue: "120000000",
+              tagline: ""))
     viewModel.performOnLoad()
   }
 }

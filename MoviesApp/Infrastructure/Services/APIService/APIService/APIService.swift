@@ -48,7 +48,6 @@ class APIService: APIServiceProtocol {
           let response = try JSONDecoder().decode(decodable.self, from: data)
           completion(.success(response))
         } catch {
-          debugPrint(error)
           completion(.failure(APIError.mappingError))
         }
       }

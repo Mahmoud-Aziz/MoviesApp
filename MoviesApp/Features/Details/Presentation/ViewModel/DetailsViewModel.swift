@@ -15,9 +15,9 @@ class DetailsViewModel: BaseViewModel {
   
   // MARK: - Private Properties
   private let movieDetails: MovieDetails
-  private var randomFiveSimilarMovies: [SimilarMovie]?
-  private var sortedTopFiveCasts: [[Cast]]?
-  private var sortedTopFiveCrews: [[Crew]]?
+  private(set) var randomFiveSimilarMovies: [SimilarMovie]?
+  private(set) var sortedTopFiveActorsCombined: [Cast]?
+  private(set) var sortedTopFiveDirectorsCombined: [Crew]?
 
   // MARK: - Init
   init(movieDetails: MovieDetails,
@@ -30,7 +30,7 @@ class DetailsViewModel: BaseViewModel {
 }
 
 // MARK: - Use Case Execution
-private extension DetailsViewModel {
+extension DetailsViewModel {
   func getSimilarMovies() {
     //    state?.update(newState: .loading)
     getSimilarMoviesUseCase.execute(id: movieDetails.id) { [weak self] result in
@@ -58,23 +58,25 @@ private extension DetailsViewModel {
         // Get the inner arrays of Crews
         let crews = similarMoviesCasts.compactMap({ $0.crew })
         
-        var sortedTopFiveCasts: [[Cast]] = []
-        for cast in casts {
-          // Sort each Cast array individually
-          let sortedCast = cast.sorted(by: { $0.popularity > $1.popularity })
-          // Append only first 5 elements and make sure to stay within count range
-          sortedTopFiveCasts.append(Array(sortedCast.prefix(min(5, sortedCast.count))))
-        }
-        self?.sortedTopFiveCasts = sortedTopFiveCasts
+        // Combine all inner Cast arrays into one array
+        let combinedActors = casts.flatMap { $0 }
+        // Sort the combined array based on the 'popularity' property in descending order
+        let sortedCombinedActors = combinedActors.sorted { $0.popularity > $1.popularity }
+        // Ensure the final count is no more than 5
+        let sortedTopFiveActorsCombined = Array(sortedCombinedActors.prefix(min(5, sortedCombinedActors.count)))
         
-        var sortedTopFiveCrews: [[Crew]] = []
-        for crew in crews {
-          // Sort each Crew array individually
-          let sortedCrew = crew.sorted(by: { $0.popularity > $1.popularity })
-          // Append only first 5 elements and make sure to stay within count range
-          sortedTopFiveCrews.append(Array(sortedCrew.prefix(min(5, sortedCrew.count))))
-        }
-        self?.sortedTopFiveCrews = sortedTopFiveCrews
+        self?.sortedTopFiveActorsCombined = sortedTopFiveActorsCombined
+        
+        // Combine all inner Crews arrays into one array
+        let combinedCrews = crews.flatMap { $0 }
+        // Extract only director
+        let combinedDirectors = combinedCrews.filter({ $0.department == "Directing" })
+        // Sort the combined array based on the 'popularity' property in descending order
+        let sortedCombinedDirectors = combinedDirectors.sorted { $0.popularity > $1.popularity }
+        // Ensure the final count is no more than 5
+        let sortedTopFiveDirectorsCombined = Array(sortedCombinedDirectors.prefix(min(5, sortedCombinedDirectors.count)))
+        
+        self?.sortedTopFiveDirectorsCombined = sortedTopFiveDirectorsCombined
         
       case .failure:
         self?.state?.update(newState: .failed(DetailsError.fetchingSimilarMoviesCastsFailed))
