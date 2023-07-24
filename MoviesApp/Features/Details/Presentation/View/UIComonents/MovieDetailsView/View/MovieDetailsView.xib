@@ -95,7 +95,7 @@
                             <rect key="frame" x="0.0" y="286" width="571" height="759"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0Hs-C7-hIE">
-                                    <rect key="frame" x="0.0" y="0.0" width="571" height="194"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="571" height="203"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sh4-Oe-AYU" userLabel="Tagline" customClass="LeadingInfoView" customModule="MoviesApp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="571" height="30"/>
@@ -135,6 +135,13 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="61N-rv-y1W" userLabel="Separator">
+                                            <rect key="frame" x="0.0" y="202" width="571" height="1"/>
+                                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="Z24-gD-0sC"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                 </stackView>
                             </subviews>

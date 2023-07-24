@@ -40,8 +40,11 @@ struct Movie: Decodable, Hashable {
 // MARK: - Processing Data
 extension Movie {
   var formattedVoteAverage: String {
-    let roundedNumber = String(format: "%.1f", voteAverage ?? 0.0)
-    return Int(roundedNumber) == .zero ? .notAvailable : roundedNumber
+    guard let voteAverage else {
+      return .notAvailable
+    }
+    let roundedNumber = String(format: "%.1f", voteAverage)
+    return roundedNumber
   }
   
   var formattedReleaseDate: String {

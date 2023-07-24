@@ -80,7 +80,8 @@ class GetSimilarMoviesCastsUseCaseTests: XCTestCase {
       voteAverage: 0.0,
       tagline: "")
     
-    sut = DetailsViewModel(movieDetails: movieDetails, getSimilarMoviesCastsUseCase: mockUseCase)
+    let departments: [CastDepartment] = [.acting, .directing] // Sort matters
+    sut = DetailsViewModel(movieDetails: movieDetails, getSimilarMoviesCastsUseCase: mockUseCase, departments: departments)
   }
   
   override func tearDown() {
@@ -104,7 +105,7 @@ class GetSimilarMoviesCastsUseCaseTests: XCTestCase {
     sut.getSimilarMoviesCasts(similarMovies: similarMovies)
     
     // Then
-    XCTAssertEqual(sut.sortedTopFiveActorsCombined?.count, 5)
+    XCTAssertEqual(sut.castTableViewData.first!.count, 5)
   }
   
   func test_TopFiveActors_areSortedDescending() {
@@ -112,7 +113,7 @@ class GetSimilarMoviesCastsUseCaseTests: XCTestCase {
     sut.getSimilarMoviesCasts(similarMovies: similarMovies)
     
     // Then
-    XCTAssert(sut.sortedTopFiveActorsCombined!.first!.popularity > sut.sortedTopFiveActorsCombined!.last!.popularity)
+    XCTAssert(sut.castTableViewData.first!.first!.popularity >= sut.castTableViewData.first!.last!.popularity)
   }
   
   func test_TopFiveDirectors_areActuallyFive() {
@@ -120,7 +121,7 @@ class GetSimilarMoviesCastsUseCaseTests: XCTestCase {
     sut.getSimilarMoviesCasts(similarMovies: similarMovies)
     
     // Then
-    XCTAssertEqual(sut.sortedTopFiveDirectorsCombined?.count, 5)
+    XCTAssertEqual(sut.castTableViewData[1].count, 5)
   }
   
   func test_TopFiveDirectors_areSortedDescending() {
@@ -128,7 +129,7 @@ class GetSimilarMoviesCastsUseCaseTests: XCTestCase {
     sut.getSimilarMoviesCasts(similarMovies: similarMovies)
     
     // Then
-    XCTAssert(sut.sortedTopFiveDirectorsCombined!.first!.popularity > sut.sortedTopFiveDirectorsCombined!.last!.popularity)
+    XCTAssert(sut.castTableViewData.last!.first!.popularity >= sut.castTableViewData.last!.last!.popularity)
   }
   
   func test_TopFiveDirectors_DepartmentIsOnlyDirecting() {
@@ -136,7 +137,7 @@ class GetSimilarMoviesCastsUseCaseTests: XCTestCase {
     sut.getSimilarMoviesCasts(similarMovies: similarMovies)
     
     // Then
-    let directors = sut.sortedTopFiveDirectorsCombined!.filter({ $0.department == "Directing" })
-    XCTAssertEqual(directors.count, sut.sortedTopFiveDirectorsCombined?.count)
+    let directors = sut.castTableViewData[1].filter({ $0.department == .directing })
+    XCTAssertEqual(directors.count, sut.castTableViewData[1].count)
   }
 }
