@@ -15,9 +15,8 @@ class MovieDetailsView: UIView {
   @IBOutlet private weak var taglineInfoView: LeadingInfoView!
   @IBOutlet private weak var voteAverageInfoView: LeadingInfoView!
   @IBOutlet private weak var revenueInfoView: LeadingInfoView!
-  @IBOutlet private weak var overviewLabel: DescriptionLabel!
-  @IBOutlet private weak var overviewLabelHeightConstraint: NSLayoutConstraint!
-  
+  @IBOutlet private weak var overviewTextView: UITextView!
+
   // MARK: - Init
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -35,7 +34,7 @@ class MovieDetailsView: UIView {
     taglineInfoView.isHidden = (data.tagline ?? "").isEmpty
     taglineInfoView.configure(title: data.tagline, description: "movie tagline")
     voteAverageInfoView.configure(title: data.voteAverage, description: "vote average")
-    overviewLabel.text = data.overview
+    overviewTextView.text = data.overview
     revenueInfoView.configure(title: data.revenue, description: "revenue")
   }
   

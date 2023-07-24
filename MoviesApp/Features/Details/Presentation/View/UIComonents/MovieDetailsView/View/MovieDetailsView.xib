@@ -12,8 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailsView" customModule="MoviesApp" customModuleProvider="target">
             <connections>
                 <outlet property="headerInfoView" destination="SI0-EM-eHw" id="ZKM-Hj-PzI"/>
-                <outlet property="overviewLabel" destination="JoU-f9-PJy" id="qsR-kl-av5"/>
-                <outlet property="overviewLabelHeightConstraint" destination="OQH-OP-iDJ" id="rTA-tC-Jyk"/>
+                <outlet property="overviewTextView" destination="PNr-IW-kJ1" id="Shd-jS-EzW"/>
                 <outlet property="posterImageView" destination="wqh-FF-WQ9" id="QWV-1n-8hH"/>
                 <outlet property="revenueInfoView" destination="rEF-BR-X4P" id="CP4-7q-3Dg"/>
                 <outlet property="taglineInfoView" destination="sh4-Oe-AYU" id="BAE-WF-0Dg"/>
@@ -32,7 +31,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="527" height="50"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="VCu-nI-Vja"/>
+                                <constraint firstAttribute="height" constant="50" placeholder="YES" id="VCu-nI-Vja"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gnC-xD-2bh" userLabel="Separator">
@@ -58,7 +57,7 @@
                             <rect key="frame" x="0.0" y="59" width="527" height="753"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0Hs-C7-hIE">
-                                    <rect key="frame" x="0.0" y="0.0" width="435" height="201"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="435" height="241"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sh4-Oe-AYU" userLabel="Tagline" customClass="LeadingInfoView" customModule="MoviesApp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="435" height="30"/>
@@ -102,10 +101,20 @@
                                                 <constraint firstAttribute="height" constant="1" id="gTh-vu-ZH8"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JoU-f9-PJy" userLabel="Overview" customClass="DescriptionLabel" customModule="MoviesApp" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="141" width="435" height="60"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PNr-IW-kJ1">
+                                            <rect key="frame" x="0.0" y="141" width="435" height="100"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="OQH-OP-iDJ"/>
+                                                <constraint firstAttribute="height" constant="100" id="Kyh-Gh-dpf"/>
+                                            </constraints>
+                                            <color key="textColor" systemColor="labelColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JoU-f9-PJy" userLabel="Overview" customClass="DescriptionLabel" customModule="MoviesApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="241" width="435" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="OQH-OP-iDJ"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -141,6 +150,9 @@
         </view>
     </objects>
     <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
