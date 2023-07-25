@@ -20,6 +20,20 @@
                ReferencedContainer = "container:MoviesApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "62C5E54E2A6F4D47003F18AD"
+               BuildableName = "MoviesAppUITests.xctest"
+               BlueprintName = "MoviesAppUITests"
+               ReferencedContainer = "container:MoviesApp.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -42,6 +56,17 @@
                BlueprintIdentifier = "62E4F4B82A6AF19900EA5652"
                BuildableName = "MoviesAppTests.xctest"
                BlueprintName = "MoviesAppTests"
+               ReferencedContainer = "container:MoviesApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "62C5E54E2A6F4D47003F18AD"
+               BuildableName = "MoviesAppUITests.xctest"
+               BlueprintName = "MoviesAppUITests"
                ReferencedContainer = "container:MoviesApp.xcodeproj">
             </BuildableReference>
          </TestableReference>

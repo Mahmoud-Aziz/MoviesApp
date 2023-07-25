@@ -30,7 +30,7 @@
                         <constraint firstAttribute="width" constant="250" placeholder="YES" id="cFt-li-41g"/>
                     </constraints>
                 </view>
-                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="7iF-rr-Iyd">
+                <searchBar contentMode="redraw" placeholder="Search Movies" translatesAutoresizingMaskIntoConstraints="NO" id="7iF-rr-Iyd">
                     <rect key="frame" x="0.0" y="59" width="393" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="tOl-am-zfW"/>

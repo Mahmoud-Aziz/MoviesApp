@@ -118,8 +118,8 @@ extension HomeViewModel {
   }
   
   func didSelectItem(at index: IndexPath) {
-    guard let movies else { return }
-    let id = movies[index.row].id
+    guard let searchFilteredResults else { return }
+    let id = searchFilteredResults[index.row].id
     state?.update(newState: .loading)
     getMovieDetails(id: id)
   }

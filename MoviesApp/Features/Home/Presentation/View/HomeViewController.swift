@@ -95,4 +95,8 @@ extension HomeViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     viewModel.search(query: searchBar.text, enableDebounce: false)
   }
+  
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    viewModel.resetSearch()
+  }
 }

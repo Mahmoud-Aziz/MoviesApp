@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="headerInfoView" destination="SI0-EM-eHw" id="ZKM-Hj-PzI"/>
                 <outlet property="overviewTextView" destination="PNr-IW-kJ1" id="Shd-jS-EzW"/>
+                <outlet property="posterActivityIndicator" destination="etx-0r-lP3" id="D8G-aV-0Hi"/>
                 <outlet property="posterImageView" destination="wqh-FF-WQ9" id="QWV-1n-8hH"/>
                 <outlet property="revenueInfoView" destination="rEF-BR-X4P" id="CP4-7q-3Dg"/>
                 <outlet property="taglineInfoView" destination="sh4-Oe-AYU" id="BAE-WF-0Dg"/>
@@ -65,10 +66,19 @@
                                                         <constraint firstAttribute="width" constant="154" id="t2T-5S-YM6"/>
                                                     </constraints>
                                                 </imageView>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="etx-0r-lP3">
+                                                    <rect key="frame" x="70.333333333333343" y="90.666666666666657" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="etx-0r-lP3" secondAttribute="height" multiplier="1:1" id="Ohl-Yt-tfe"/>
+                                                        <constraint firstAttribute="width" constant="50" id="u9h-FV-Uuk"/>
+                                                    </constraints>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
+                                                <constraint firstItem="etx-0r-lP3" firstAttribute="centerX" secondItem="esg-Ho-cYJ" secondAttribute="centerX" id="3OV-VQ-SfR"/>
                                                 <constraint firstItem="wqh-FF-WQ9" firstAttribute="centerX" secondItem="esg-Ho-cYJ" secondAttribute="centerX" id="DbF-6k-urb"/>
+                                                <constraint firstItem="etx-0r-lP3" firstAttribute="centerY" secondItem="esg-Ho-cYJ" secondAttribute="centerY" id="bcI-WH-y1r"/>
                                                 <constraint firstItem="wqh-FF-WQ9" firstAttribute="centerY" secondItem="esg-Ho-cYJ" secondAttribute="centerY" id="dcy-62-kIC"/>
                                             </constraints>
                                         </view>
