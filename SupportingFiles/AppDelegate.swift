@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   ) -> Bool {
     window = UIWindow(frame: UIScreen.main.bounds)
     let navigationController = UINavigationController(rootViewController: HomeViewController())
+    navigationController.navigationBar.accessibilityIdentifier = "AppNavigationBar"
     navigationController.navigationBar.tintColor = .reversedSystemBackground
     window?.rootViewController = navigationController
     window?.makeKeyAndVisible()

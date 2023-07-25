@@ -99,7 +99,7 @@ extension DetailsViewModel {
         
         // Combine all inner Crews arrays into one array
         let combinedCrews = crews.flatMap { $0 }
-        // Extract only director
+        // Extract only directors
         let combinedDirectors = combinedCrews.filter({ $0.department == "Directing" })
         // Ensure all elements are unique
         
