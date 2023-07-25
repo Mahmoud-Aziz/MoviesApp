@@ -10,14 +10,14 @@ import SVProgressHUD
 import UIKit
 
 extension UIViewController: Loadable {
-    func showLoader(_ show: Bool) {
-        if show {
-            SVProgressHUD.setDefaultMaskType(.clear)
-            SVProgressHUD.setForegroundColor(.red)
-            SVProgressHUD.setBackgroundColor(.black)
-            SVProgressHUD.show()
-        } else {
-            SVProgressHUD.dismiss()
-        }
+  func showLoader(_ show: Bool) {
+    if show {
+      SVProgressHUD.setDefaultMaskType(.clear)
+      SVProgressHUD.setForegroundColor(.systemGray)
+      SVProgressHUD.setBackgroundColor(.clear)
+      SVProgressHUD.show()
+    } else {
+      SVProgressHUD.dismiss()
     }
+  }
 }

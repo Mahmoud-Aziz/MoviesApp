@@ -9,6 +9,6 @@
 import Foundation
 
 public enum RouteStyle {
-    case present
-    case push
+  case present
+  case push
 }

@@ -5,8 +5,11 @@
 //  Created by Mahmoud Aziz on 22/07/2023.
 //
 
-App_api_service_url_schema = https
-App_api_base_url = api.themoviedb.org/3
 App_bundle_identifier = com.telda.movies.app
-App_name = Movies App
+App_name = TMDB Discovery
+App_api_service_url_schema = https
+
+TMDB_api_base_url = api.themoviedb.org/3
+TMDB_image_base_url = image.tmdb.org/t/p/
+TMDB_api_key = 71ef96b0cb01105469f4c294fca0bd28
 TMDB_access_token = Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MWVmOTZiMGNiMDExMDU0NjlmNGMyOTRmY2EwYmQyOCIsInN1YiI6IjYwYmVkODAxOGE4OGIyMDAzZmVlNzc4MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tgEeZlamp3qRGGn8YsiF8cv8R7x6iMY-AOVKyxV1UpE

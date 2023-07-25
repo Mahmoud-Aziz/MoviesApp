@@ -18,6 +18,13 @@
         "identifier" : "62E4F4B82A6AF19900EA5652",
         "name" : "MoviesAppTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:MoviesApp.xcodeproj",
+        "identifier" : "62C5E54E2A6F4D47003F18AD",
+        "name" : "MoviesAppUITests"
+      }
     }
   ],
   "version" : 1
