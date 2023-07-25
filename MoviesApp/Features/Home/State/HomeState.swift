@@ -1,32 +1,32 @@
 //
-//  States.swift
+//  HomeState.swift
 //  MoviesApp
 //
-//  Created by Mahmoud Aziz on 22/07/2023.
+//  Created by Mahmoud Aziz on 25/07/2023.
 //  Copyright © 2023 Telda. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-// MARK: - State
-public enum State {
+// MARK: - HomeState
+public enum HomeState {
   case idle
   case loading
   case reload
-  case completed
   case failed(ErrorPresentable)
+  case fetchingMovieDetailsFailed(ErrorPresentable)
   case navigate(RouteProtocol)
 }
 
-// MARK: - State + Equatable
-extension State: Equatable {
-  public static func == (lhs: State, rhs: State) -> Bool {
+// MARK: - HomeState + Equatable
+extension HomeState: Equatable {
+  public static func == (lhs: HomeState, rhs: HomeState) -> Bool {
     switch (lhs, rhs) {
     case (.idle, .idle): return true
     case (.loading, .loading): return true
-    case (.completed, .completed): return true
     case (.reload, .reload): return true
     case (.failed, .failed): return true
+    case (.fetchingMovieDetailsFailed, .fetchingMovieDetailsFailed): return true
     case (.navigate, .navigate): return true
     default:
       return false

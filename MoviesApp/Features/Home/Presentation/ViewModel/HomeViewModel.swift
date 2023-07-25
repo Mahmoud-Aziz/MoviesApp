@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HomeViewModel: BaseViewModel {
+class HomeViewModel {
   // MARK: - Use Cases
   private var getPopularMoviesUseCase: GetPopularMoviesUseCaseProtocol
   private var searchMoviesUseCase: SearchMoviesUseCaseProtocol
@@ -17,10 +17,14 @@ class HomeViewModel: BaseViewModel {
   
   // MARK: - Private Properties
   private(set) var movies: [Movie]?
-  private(set) var currentPage = 1
-  private(set) var totalPages = 0
+  private(set) var currentPageCount = 1
+  private(set) var totalPagesCount = 0
   private(set) var searchFilteredResults: [Movie]?
-  
+  private(set) var isFetching: Bool = false
+
+  // MARK: - Binding
+  var state: HomeStateClosure?
+
   // MARK: - Init
   init(getPopularMoviesUseCase: GetPopularMoviesUseCaseProtocol = GetPopularMoviesUseCase(),
        searchMoviesUseCase: SearchMoviesUseCaseProtocol = SearchMoviesUseCase(),
@@ -30,42 +34,52 @@ class HomeViewModel: BaseViewModel {
     self.searchMoviesUseCase = searchMoviesUseCase
     self.getMovieDetailsUseCase = getMovieDetailsUseCase
     self.environment = ServiceLocator.shared.environment
-    super.init()
+//    super.init()
   }
 }
 // MARK: - Use Case Execution
 private extension HomeViewModel {
-  func getPopularMovies(pageCount: Int) {
-    state?.update(newState: .loading)
-    getPopularMoviesUseCase.execute(pageCount: pageCount) { [weak self] result in
+  func getPopularMovies(pageIndex: Int, showIndicator: Bool) {
+    guard !isFetching else { return }
+    if showIndicator {
+      state?(.loading)
+    }
+    isFetching = true
+    getPopularMoviesUseCase.execute(pageCount: pageIndex) { [weak self] result in
       guard let self else { return }
+      self.isFetching = false
       switch result {
       case .success(let popularMovies):
-        self.movies = popularMovies.movies
-        self.searchFilteredResults = popularMovies.movies
-        self.totalPages = popularMovies.totalPages
-        self.state?.update(newState: .reload)
+        if pageIndex == 1 {
+          self.movies = popularMovies.movies
+          self.searchFilteredResults = popularMovies.movies
+        } else {
+          self.movies?.append(contentsOf: popularMovies.movies)
+          self.searchFilteredResults?.append(contentsOf: popularMovies.movies)
+        }
+        self.totalPagesCount = popularMovies.totalPages
+        self.state?(.reload)
       case .failure:
-        self.state?.update(newState: .failed(HomeError.fetchingPopularMoviesFailed))
+        self.state?(.failed(HomeError.fetchingPopularMoviesFailed))
       }
     }
   }
   
   func searchMovies(query: String, enableDebounce: Bool) {
-    state?.update(newState: .loading)
+    state?(.loading)
     searchMoviesUseCase.execute(query: query, enableDebounce: enableDebounce) { [weak self] result in
       guard let self else { return }
       switch result {
       case .success(let popularMovies):
         guard !popularMovies.movies.isEmpty else {
-          self.state?.update(newState: .failed(HomeError.searchFailed))
+          self.state?(.failed(HomeError.searchFailed))
           return
         }
         self.searchFilteredResults = popularMovies.movies.filter { $0.title.lowercased().contains(query) }
-        self.totalPages = popularMovies.totalPages
-        self.state?.update(newState: .reload)
+        self.totalPagesCount = popularMovies.totalPages
+        self.state?(.reload)
       case .failure:
-        self.state?.update(newState: .failed(HomeError.searchFailed))
+        self.state?(.failed(HomeError.searchFailed))
       }
     }
   }
@@ -74,9 +88,9 @@ private extension HomeViewModel {
     getMovieDetailsUseCase.execute(id: id) { [weak self] result in
       switch result {
       case .success(let movieDetails):
-        self?.state?.update(newState: .navigate(HomeRouter.details(movieDetails)))
+        self?.state?(.navigate(HomeRouter.details(movieDetails)))
       case .failure:
-        self?.state?.update(newState: .failed(HomeError.fetchingMovieDetailsFailed))
+        self?.state?(.fetchingMovieDetailsFailed(HomeError.fetchingMovieDetailsFailed))
       }
     }
   }
@@ -85,7 +99,7 @@ private extension HomeViewModel {
 // MARK: - View Helpers
 extension HomeViewModel {
   func performOnLoad() {
-    getPopularMovies(pageCount: 1)
+    getPopularMovies(pageIndex: 1, showIndicator: true)
   }
   
   func search(query: String?, enableDebounce: Bool) {
@@ -98,16 +112,16 @@ extension HomeViewModel {
   
   func resetSearch() {
     searchFilteredResults = movies
-    state?.update(newState: .reload)
+    state?(.reload)
   }
   
   func prefetch(at indexPaths: [IndexPath]) {
     guard let searchFilteredResults else { return }
-    let lastIndex = searchFilteredResults.count - 1
+    let lastIndex = searchFilteredResults.count - 10
     if indexPaths.contains(where: { $0.row == lastIndex }) {
-      if currentPage < totalPages {
-        currentPage += 1
-        getPopularMovies(pageCount: currentPage)
+      if currentPageCount < totalPagesCount {
+        currentPageCount += 1
+        getPopularMovies(pageIndex: currentPageCount, showIndicator: false)
       }
     }
   }
@@ -120,7 +134,7 @@ extension HomeViewModel {
   func didSelectItem(at index: IndexPath) {
     guard let searchFilteredResults else { return }
     let id = searchFilteredResults[index.row].id
-    state?.update(newState: .loading)
+    state?(.loading)
     getMovieDetails(id: id)
   }
   

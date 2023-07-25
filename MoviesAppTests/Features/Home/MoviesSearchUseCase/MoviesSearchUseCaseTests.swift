@@ -44,7 +44,7 @@ class MoviesSearchUseCaseTests: XCTestCase {
     
     // Then
     XCTAssertEqual(sut.searchFilteredResults!.count, 3)
-    XCTAssertEqual(sut.totalPages, 1)
+    XCTAssertEqual(sut.totalPagesCount, 1)
   }
   
   func testSearchMovies_Failure() {

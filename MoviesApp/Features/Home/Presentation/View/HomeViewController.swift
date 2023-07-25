@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: - HomeViewController
-class HomeViewController: BaseViewController {
+class HomeViewController: UIViewController {
   // MARK: - IBOutlet
   @IBOutlet private weak var failureView: FailureView!
   @IBOutlet private weak var homeSearchBar: UISearchBar!
@@ -31,21 +31,10 @@ class HomeViewController: BaseViewController {
   // MARK: - View lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    bindViewModelState(viewModel)
+    bindViewModelState()
     setupView()
     viewModel.resetSearch()
     viewModel.performOnLoad()
-  }
-  
-  override func handleViewModelReloadState() {
-    super.handleViewModelReloadState()
-    homeTableView.isHidden = false
-    homeTableView.reloadData()
-  }
-  
-  override func handleViewModelFailureState(error: ErrorPresentable) {
-    homeTableView.isHidden = true
-    failureView.configure(image: error.image, description: error.message)
   }
 }
 
@@ -55,6 +44,26 @@ private extension HomeViewController {
     title = viewModel.viewTitle
     homeTableView.registerCellNib(HomeTableViewCell.self)
     homeTableView.rowHeight = 100
+  }
+  
+  func bindViewModelState() {
+    viewModel.state = { [weak self] state in
+      self?.showLoader(state == .loading)
+      switch state {
+      case .reload:
+        self?.homeTableView.isHidden = false
+        self?.homeTableView.reloadData()
+      case .failed(let error):
+        self?.homeTableView.isHidden = true
+        self?.failureView.configure(image: error.image, description: error.message)
+      case .fetchingMovieDetailsFailed(let error):
+        self?.present(error.alert, animated: true)
+      case .navigate(let destination):
+        self?.navigate(to: destination)
+      default:
+        break
+      }
+    }
   }
 }
 

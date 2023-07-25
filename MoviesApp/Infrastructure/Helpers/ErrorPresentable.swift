@@ -11,4 +11,5 @@ import UIKit
 public protocol ErrorPresentable: Error {
   var message: String { get }
   var image: UIImage? { get }
+  var alert: UIAlertController { get }
 }

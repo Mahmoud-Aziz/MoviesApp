@@ -16,9 +16,9 @@ enum DetailsError: ErrorPresentable {
   var message: String {
     switch self {
     case .fetchingSimilarMoviesFailed:
-      return "Sorry, we couldn't get similars for this movie :("
+      return "Sorry, we couldn't get similars for this movie"
     case .fetchingSimilarMoviesCastsFailed:
-      return "Sorry, we couldn't get similars movies casts for this movie :("
+      return "Sorry, we couldn't get similars movies cast"
     default:
       return "Sorry, unexpected error occurred"
     }
@@ -27,9 +27,13 @@ enum DetailsError: ErrorPresentable {
   var image: UIImage? {
     switch self {
     case .fetchingMoviePosterFailed:
-        return .placeholder
+      return .placeholder
     default:
-      return .notFound
+      return .failed
     }
+  }
+  
+  var alert: UIAlertController {
+    return .init(title: "", message: "", preferredStyle: .alert)
   }
 }

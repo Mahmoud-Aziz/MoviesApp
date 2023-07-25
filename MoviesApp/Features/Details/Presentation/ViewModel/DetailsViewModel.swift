@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DetailsViewModel: BaseViewModel {
+class DetailsViewModel {
   // MARK: - Use Cases
   private let getSimilarMoviesUseCase: GetSimilarMoviesUseCaseProtocol
   private let getSimilarMoviesCastsUseCase: GetSimilarMoviesCastsUseCaseProtocol
@@ -23,6 +23,7 @@ class DetailsViewModel: BaseViewModel {
   
   // MARK: - Binding
   var posterImageDataFetched: DataClosure?
+  var state: DetailsStateClosure?
   
   // MARK: - Init
   init(group: DispatchGroup = DispatchGroup(),
@@ -43,8 +44,8 @@ class DetailsViewModel: BaseViewModel {
 // MARK: - Use Case Execution
 extension DetailsViewModel {
   func getSimilarMovies(group: DispatchGroup? = nil) {
+    state?(.loadingSimilarMoviesTableView)
     group?.enter()
-    //    state?.update(newState: .loading)
     getSimilarMoviesUseCase.execute(id: movieDetails.id) { [weak self] result in
       switch result {
       case .success(let similarMovies):
@@ -57,15 +58,16 @@ extension DetailsViewModel {
         let randomFiveSimilarMovies = Array(shuffledSimilarMovies.prefix(min(5, count)))
         self?.randomFiveSimilarMovies = randomFiveSimilarMovies
         self?.getSimilarMoviesCasts(similarMovies: randomFiveSimilarMovies)
-        self?.state?.update(newState: .reload)
+        self?.state?(.reloadSimilarMoviesTableView)
       case .failure:
-        self?.state?.update(newState: .failed(DetailsError.fetchingSimilarMoviesFailed))
+        self?.state?(.failedFetchingSimilarMovies(DetailsError.fetchingSimilarMoviesFailed))
       }
       group?.leave()
     }
   }
   
   func getSimilarMoviesCasts(similarMovies: [Movie]) {
+    state?(.loadingSimilarMoviesCastTableView)
     getSimilarMoviesCastsUseCase.execute(similarMovies: similarMovies) { [weak self] result in
       switch result {
       case .success(let similarMoviesCasts):
@@ -127,11 +129,9 @@ extension DetailsViewModel {
         // Create the 2D table data
         guard let self else { return }
         self.castTableViewData = self.departments.compactMap({ groupedData[$0] })
-        
-        state?.update(newState: .reload)
-        
+        self.state?(.reloadSimilarMoviesCastTableView)
       case .failure:
-        self?.state?.update(newState: .failed(DetailsError.fetchingSimilarMoviesCastsFailed))
+        self?.state?(.failedFetchingSimilarMoviesCasts(DetailsError.fetchingSimilarMoviesCastsFailed))
       }
     }
   }
@@ -143,7 +143,7 @@ extension DetailsViewModel {
       case .success(let imageData):
         self?.posterImageDataFetched?(imageData)
       case .failure:
-        break
+        self?.posterImageDataFetched?(Data())
       }
       group?.enter()
     }

@@ -11,7 +11,7 @@ import UIKit
 class FailureView: UIView {
 
   @IBOutlet private weak var imageView: UIImageView!
-  @IBOutlet private weak var descriptionLabel: UILabel!
+  @IBOutlet private weak var descriptionLabel: DescriptionLabel!
 
   override init(frame: CGRect) {
     super.init(frame: frame)

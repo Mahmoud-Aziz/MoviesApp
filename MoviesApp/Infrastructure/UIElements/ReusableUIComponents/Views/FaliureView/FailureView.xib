@@ -21,13 +21,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Cf1-Dy-qRS">
-                    <rect key="frame" x="109.66666666666669" y="39" width="330" height="380"/>
+                    <rect key="frame" x="8" y="104" width="533" height="250"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZVG-5A-Zhs">
-                            <rect key="frame" x="0.0" y="0.0" width="330" height="330"/>
+                            <rect key="frame" x="0.0" y="0.0" width="533" height="200"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PSd-ss-sEF">
-                                    <rect key="frame" x="65" y="65" width="200" height="200"/>
+                                    <rect key="frame" x="166.66666666666663" y="0.0" width="200" height="200"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="200" id="8vz-nr-c1y"/>
                                     </constraints>
@@ -35,15 +35,17 @@
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="ZVG-5A-Zhs" secondAttribute="height" multiplier="1:1" id="QBg-RW-ICJ"/>
-                                <constraint firstItem="PSd-ss-sEF" firstAttribute="centerX" secondItem="ZVG-5A-Zhs" secondAttribute="centerX" id="cw5-Xn-ONP"/>
+                                <constraint firstItem="PSd-ss-sEF" firstAttribute="centerY" secondItem="ZVG-5A-Zhs" secondAttribute="centerY" id="SJV-f0-LVU"/>
+                                <constraint firstAttribute="height" constant="200" id="XEs-be-5qw"/>
+                                <constraint firstItem="PSd-ss-sEF" firstAttribute="centerX" secondItem="ZVG-5A-Zhs" secondAttribute="centerX" id="ayP-qq-GJh"/>
                                 <constraint firstItem="PSd-ss-sEF" firstAttribute="width" secondItem="PSd-ss-sEF" secondAttribute="height" id="gx9-f6-cme"/>
-                                <constraint firstItem="PSd-ss-sEF" firstAttribute="centerY" secondItem="ZVG-5A-Zhs" secondAttribute="centerY" id="iFP-Nm-pPf"/>
-                                <constraint firstAttribute="width" constant="330" id="ywY-8h-Fk3"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4e-Xd-COY" customClass="DescriptionLabel" customModule="MoviesApp" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="330" width="330" height="50"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4e-Xd-COY" customClass="DescriptionLabel" customModule="MoviesApp" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="200" width="533" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="yQb-dl-We7"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -54,8 +56,9 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="Cf1-Dy-qRS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ayb-7c-RV4"/>
-                <constraint firstItem="Cf1-Dy-qRS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fKH-Ax-pO4"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Cf1-Dy-qRS" secondAttribute="trailing" constant="8" id="5Ah-Z3-gHQ"/>
+                <constraint firstItem="Cf1-Dy-qRS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fk1-Sg-IUE"/>
+                <constraint firstItem="Cf1-Dy-qRS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="hmV-bx-13l"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="154.96183206106869" y="-208.45070422535213"/>
