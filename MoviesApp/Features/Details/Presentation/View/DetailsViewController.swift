@@ -92,6 +92,7 @@ extension DetailsViewController: UITableViewDataSource {
       let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "CastTableViewCell", for: indexPath)
       let castMember = viewModel.getSimilarMoviesCast(at: indexPath)
       cell.textLabel?.text = castMember?.name
+      cell.backgroundColor = .customSystemBackground
       return cell
     default:
       return UITableViewCell()

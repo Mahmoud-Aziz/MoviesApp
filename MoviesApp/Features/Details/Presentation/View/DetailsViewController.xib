@@ -94,7 +94,7 @@
                                     </subviews>
                                 </stackView>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="Wya-b6-8Uc" firstAttribute="leading" secondItem="oXj-ZS-QuG" secondAttribute="leading" id="G4D-wD-piL"/>
                                 <constraint firstAttribute="trailing" secondItem="Wya-b6-8Uc" secondAttribute="trailing" id="GIN-bw-7ti"/>
