@@ -17,16 +17,20 @@ class MovieDetailsView: UIView {
   @IBOutlet private weak var revenueInfoView: LeadingInfoView!
   @IBOutlet private weak var overviewTextView: UITextView!
   @IBOutlet private weak var posterActivityIndicator: UIActivityIndicatorView!
-
+  @IBOutlet private weak var addToFavoritesImageView: UIImageView!
+  
+  // MARK: - Private Properties
+  private var isAddedToFavorites: Bool = false
+  
   // MARK: - Init
   override init(frame: CGRect) {
     super.init(frame: frame)
-    loadfromNib()
+    setupView()
   }
   
   required init?(coder: NSCoder) {
     super.init(coder: coder)
-    loadfromNib()
+    setupView()
   }
   
   // MARK: - Configure View
@@ -38,7 +42,6 @@ class MovieDetailsView: UIView {
     voteAverageLabel.textColor = data.voteAverageTextColor
     overviewTextView.text = data.overview
     revenueInfoView.configure(title: data.revenue, description: "revenue")
-    posterActivityIndicator.startAnimating()
   }
   
   func setPosterImage(data: Data) {
@@ -49,5 +52,21 @@ class MovieDetailsView: UIView {
     }
     posterActivityIndicator.stopAnimating()
     posterImageView.image = image
+  }
+}
+
+// MARK: - Setup View
+private extension MovieDetailsView {
+  func setupView() {
+    loadfromNib()
+    posterActivityIndicator.startAnimating()
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addToFavoritesTapped))
+    addToFavoritesImageView.addGestureRecognizer(tapGesture)
+  }
+  
+  @objc func addToFavoritesTapped(sender: Any) {
+    // TODO: - [Aziz] debounce
+    isAddedToFavorites.toggle()
+    addToFavoritesImageView.tintColor = isAddedToFavorites ? UIColor(named: "Gold") : .systemGray
   }
 }

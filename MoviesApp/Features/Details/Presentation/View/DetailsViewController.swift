@@ -16,7 +16,8 @@ class DetailsViewController: BaseViewController {
   
   // MARK: - Private properties
   private let viewModel: DetailsViewModel
-
+  private let castCellID = "CastTableViewCell"
+  
   // MARK: - Init
   init(viewModel: DetailsViewModel) {
     self.viewModel = viewModel
@@ -46,8 +47,9 @@ class DetailsViewController: BaseViewController {
 // MARK: - Setup View
 private extension DetailsViewController {
   func setupView() {
+    navigationItem.backBarButtonItem?.accessibilityIdentifier = "DetailsBackButton"
     similarMoviesTableView.registerCellNib(HomeTableViewCell.self)
-    castTableView.register(UITableViewCell.self, forCellReuseIdentifier: "CastTableViewCell")
+    castTableView.register(UITableViewCell.self, forCellReuseIdentifier: castCellID)
     similarMoviesTableView.rowHeight = 100
     movieDetailsView.configure(with: viewModel.movieDetailsViewData)
     bindPosterImageData()
@@ -89,11 +91,11 @@ extension DetailsViewController: UITableViewDataSource {
       similarMoviesCell.configure(with: viewModel.getSimilarMovie(at: indexPath))
       return similarMoviesCell
     case castTableView:
-      let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "CastTableViewCell", for: indexPath)
+      let castTableViewCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: castCellID, for: indexPath)
       let castMember = viewModel.getSimilarMoviesCast(at: indexPath)
-      cell.textLabel?.text = castMember?.name
-      cell.backgroundColor = .customSystemBackground
-      return cell
+      castTableViewCell.textLabel?.text = castMember?.name
+      castTableViewCell.backgroundColor = .customSystemBackground
+      return castTableViewCell
     default:
       return UITableViewCell()
     }
