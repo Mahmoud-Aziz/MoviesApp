@@ -13,7 +13,7 @@ class MockMoviesSearchUseCase: SearchMoviesUseCaseProtocol {
   var lastQuery: String!
   var result: Result<PopularMovies, APIError>!
   
-  func execute(query: String, completion: @escaping ResultClosure<PopularMovies>) {
+  func execute(query: String, enableDebounce: Bool = true, completion: @escaping ResultClosure<PopularMovies>) {
     completion(result)
   }
 }

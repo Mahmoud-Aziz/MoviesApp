@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - SearchMoviesUseCaseProtocol
 protocol SearchMoviesUseCaseProtocol {
-  func execute(query: String, completion: @escaping ResultClosure<PopularMovies>)
+  func execute(query: String, enableDebounce: Bool, completion: @escaping ResultClosure<PopularMovies>)
 }
 
 // MARK: - SearchMoviesUseCase
@@ -22,7 +22,11 @@ class SearchMoviesUseCase: SearchMoviesUseCaseProtocol {
     self.repository = repository
   }
   
-  func execute(query: String, completion: @escaping ResultClosure<PopularMovies>) {
+  func execute(query: String, enableDebounce: Bool, completion: @escaping ResultClosure<PopularMovies>) {
+    guard enableDebounce else {
+      repository.searchMovies(query: query, completion: completion)
+      return
+    }
     debounce?.invalidate()
     debounce = Debounce(delay: 0.5, completion: { [weak self] in
       self?.repository.searchMovies(query: query, completion: completion)
