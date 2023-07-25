@@ -16,6 +16,7 @@ class MovieDetailsView: UIView {
   @IBOutlet private weak var voteAverageLabel: HeaderLabel!
   @IBOutlet private weak var revenueInfoView: LeadingInfoView!
   @IBOutlet private weak var overviewTextView: UITextView!
+  @IBOutlet private weak var posterActivityIndicator: UIActivityIndicatorView!
 
   // MARK: - Init
   override init(frame: CGRect) {
@@ -37,13 +38,16 @@ class MovieDetailsView: UIView {
     voteAverageLabel.textColor = data.voteAverageTextColor
     overviewTextView.text = data.overview
     revenueInfoView.configure(title: data.revenue, description: "revenue")
+    posterActivityIndicator.startAnimating()
   }
   
   func setPosterImage(data: Data) {
     guard let image = UIImage(data: data) else {
       posterImageView.image = .placeholder
+      posterActivityIndicator.stopAnimating()
       return
     }
+    posterActivityIndicator.stopAnimating()
     posterImageView.image = image
   }
 }

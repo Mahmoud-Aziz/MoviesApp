@@ -43,7 +43,7 @@ extension Int {
       var formattedString = numberFormatter.string(from: NSNumber(value: formattedNumber)) ?? ""
       
       if formattedString == "0" {
-          formattedString = "0" // To handle negative zero formatting
+          formattedString = "0"
       }
       
       return formattedString + suffix
