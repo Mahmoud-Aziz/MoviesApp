@@ -16,11 +16,11 @@ enum HomeError: ErrorPresentable {
   var message: String {
     switch self {
     case .searchFailed:
-      return "Search query doesn't match any of our records, please try again with a different one"
+      return "Search query doesn't match any of our records"
     case .fetchingPopularMoviesFailed:
       return "Sorry, unexpected error occurred! please try again"
     case .fetchingMovieDetailsFailed:
-      return "Sorry, we couldn't get details for this movie :("
+      return "Sorry, we couldn't get details for this movie"
     }
   }
   
@@ -35,5 +35,18 @@ enum HomeError: ErrorPresentable {
       break
     }
     return image
+  }
+  
+  var alert: UIAlertController {
+    switch self {
+    case .fetchingMovieDetailsFailed:
+      let action = UIAlertAction(title: "dismiss", style: .default)
+      let message = "Sorry, we couldn't get details for this movie"
+      let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+      alert.addAction(action)
+      return alert
+    default:
+      return .init(title: "", message: "", preferredStyle: .alert)
+    }
   }
 }

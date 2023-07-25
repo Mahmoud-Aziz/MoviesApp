@@ -10,8 +10,8 @@ import UIKit
 
 class VerticalInfoView: UIView {
 
-  @IBOutlet private weak var titleLabel: UILabel!
-  @IBOutlet private weak var subtitleLabel: UILabel!
+  @IBOutlet private weak var titleLabel: TitleLabel!
+  @IBOutlet private weak var subtitleLabel: SubtitleLabel!
 
   override init(frame: CGRect) {
     super.init(frame: frame)

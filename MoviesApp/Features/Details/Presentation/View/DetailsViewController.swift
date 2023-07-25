@@ -8,10 +8,11 @@
 
 import UIKit
 
-class DetailsViewController: BaseViewController {
+class DetailsViewController: UIViewController {
   // MARK: - IBOutlets
   @IBOutlet private weak var movieDetailsView: MovieDetailsView!
   @IBOutlet private weak var similarMoviesTableView: UITableView!
+  @IBOutlet private weak var castTableViewContainerView: UIView!
   @IBOutlet private weak var castTableView: UITableView!
   
   // MARK: - Private properties
@@ -31,16 +32,9 @@ class DetailsViewController: BaseViewController {
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    bindViewModelState(viewModel)
+    bindViewModelState()
     setupView()
     viewModel.performOnLoad()
-  }
-  
-  // MARK: - State Management
-  override func handleViewModelReloadState() {
-    super.handleViewModelReloadState()
-    similarMoviesTableView.reloadData()
-    castTableView.reloadData()
   }
 }
 
@@ -53,6 +47,46 @@ private extension DetailsViewController {
     similarMoviesTableView.rowHeight = 100
     movieDetailsView.configure(with: viewModel.movieDetailsViewData)
     bindPosterImageData()
+  }
+  
+  func bindViewModelState() {
+    viewModel.state = { [weak self] state in
+      let similarMoviesIndicator = UIActivityIndicatorView()
+      let castIndicator = UIActivityIndicatorView()
+      switch state {
+      case .loadingSimilarMoviesTableView:
+        let indicator = UIActivityIndicatorView()
+        self?.similarMoviesTableView.backgroundView = similarMoviesIndicator
+        similarMoviesIndicator.startAnimating()
+        
+      case .loadingSimilarMoviesCastTableView:
+        self?.castTableView.backgroundView = castIndicator
+        castIndicator.startAnimating()
+        
+      case .reloadSimilarMoviesTableView:
+        similarMoviesIndicator.stopAnimating()
+        self?.similarMoviesTableView.reloadData()
+        
+      case .reloadSimilarMoviesCastTableView:
+        castIndicator.stopAnimating()
+        self?.castTableView.reloadData()
+        
+      case .failedFetchingSimilarMovies(let error):
+        similarMoviesIndicator.stopAnimating()
+        let failureView = FailureView()
+        failureView.configure(image: error.image, description: error.message)
+        self?.similarMoviesTableView.backgroundView = failureView
+        self?.castTableViewContainerView.isHidden = true
+        
+      case .failedFetchingSimilarMoviesCasts(let error):
+        castIndicator.stopAnimating()
+        let failureView = FailureView()
+        failureView.configure(image: error.image, description: error.message)
+        self?.castTableView.backgroundView = failureView
+      default:
+        break
+      }
+    }
   }
   
   func bindPosterImageData() {
@@ -89,12 +123,14 @@ extension DetailsViewController: UITableViewDataSource {
     case similarMoviesTableView:
       let similarMoviesCell: HomeTableViewCell = tableView.dequeue(cellForItemAt: indexPath)
       similarMoviesCell.configure(with: viewModel.getSimilarMovie(at: indexPath))
+      similarMoviesCell.setSelectedCellColor(.clear)
       return similarMoviesCell
     case castTableView:
       let castTableViewCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: castCellID, for: indexPath)
       let castMember = viewModel.getSimilarMoviesCast(at: indexPath)
       castTableViewCell.textLabel?.text = castMember?.name
       castTableViewCell.backgroundColor = .customSystemBackground
+      castTableViewCell.setSelectedCellColor(.clear)
       return castTableViewCell
     default:
       return UITableViewCell()
@@ -110,5 +146,12 @@ extension DetailsViewController: UITableViewDataSource {
     default:
       return ""
     }
+  }
+}
+
+// MARK: - Similar movies and similar movies cast UITableViewDelegate
+extension DetailsViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: false)
   }
 }

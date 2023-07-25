@@ -24,3 +24,11 @@ extension UITableView {
     return cell
   }
 }
+
+extension UITableViewCell {
+  func setSelectedCellColor(_ colorOnSelection: UIColor) {
+    let backgroundView = UIView()
+    backgroundView.backgroundColor = colorOnSelection
+    selectedBackgroundView = backgroundView
+  }
+}

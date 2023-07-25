@@ -10,8 +10,8 @@ import UIKit
 
 class LeadingInfoView: UIView {
 
-  @IBOutlet private weak var titleLabel: UILabel!
-  @IBOutlet private weak var descriptionLabel: UILabel!
+  @IBOutlet private weak var titleLabel: TitleLabel!
+  @IBOutlet private weak var descriptionLabel: DescriptionLabel!
 
   override init(frame: CGRect) {
     super.init(frame: frame)

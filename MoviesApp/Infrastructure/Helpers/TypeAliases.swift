@@ -10,3 +10,5 @@ import Foundation
 
 typealias ResultClosure<T: Decodable> = (Result<T, APIError>) -> Void
 typealias DataClosure = (Data) -> Void
+typealias HomeStateClosure = (HomeState) -> Void
+typealias DetailsStateClosure = (DetailsState) -> Void
