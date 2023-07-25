@@ -187,4 +187,8 @@ extension DetailsViewModel {
     let department = departments[section]
     return department.headerTitle
   }
+  
+  var castCellID: String {
+    "CastTableViewCell" 
+  }
 }

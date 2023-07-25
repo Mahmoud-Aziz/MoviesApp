@@ -30,10 +30,10 @@
                     <rect key="frame" x="0.0" y="59" width="471" height="2005"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oXj-ZS-QuG" userLabel="ContentView">
-                            <rect key="frame" x="0.0" y="0.0" width="471" height="1300"/>
+                            <rect key="frame" x="0.0" y="0.0" width="471" height="1645"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Wya-b6-8Uc">
-                                    <rect key="frame" x="0.0" y="0.0" width="471" height="1300"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Wya-b6-8Uc">
+                                    <rect key="frame" x="0.0" y="0.0" width="471" height="1645"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jvd-bs-cgr" customClass="MovieDetailsView" customModule="MoviesApp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="471" height="500"/>
@@ -43,42 +43,31 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f9R-Dq-Wat">
-                                            <rect key="frame" x="0.0" y="508" width="471" height="284"/>
+                                            <rect key="frame" x="0.0" y="500" width="471" height="570"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="s8y-1g-kSF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="471" height="284"/>
-                                                    <subviews>
-                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Similar Movies" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwj-Qu-Sao" customClass="TitleLabel" customModule="MoviesApp" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="471" height="0.0"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="30" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MsB-Cf-hh2">
-                                                            <rect key="frame" x="0.0" y="0.0" width="471" height="284"/>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
-                                                            <connections>
-                                                                <outlet property="dataSource" destination="-1" id="nbR-Qe-7c7"/>
-                                                            </connections>
-                                                        </tableView>
-                                                    </subviews>
-                                                </stackView>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="30" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MsB-Cf-hh2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="471" height="570"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="-1" id="nbR-Qe-7c7"/>
+                                                    </connections>
+                                                </tableView>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="s8y-1g-kSF" secondAttribute="trailing" id="7Wt-ed-7g1"/>
-                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="Ni8-TW-aJO"/>
-                                                <constraint firstItem="s8y-1g-kSF" firstAttribute="top" secondItem="f9R-Dq-Wat" secondAttribute="top" id="aqv-cr-z5E"/>
-                                                <constraint firstAttribute="bottom" secondItem="s8y-1g-kSF" secondAttribute="bottom" id="bXw-ZZ-sns"/>
-                                                <constraint firstItem="s8y-1g-kSF" firstAttribute="leading" secondItem="f9R-Dq-Wat" secondAttribute="leading" id="the-aL-YI0"/>
+                                                <constraint firstItem="MsB-Cf-hh2" firstAttribute="leading" secondItem="f9R-Dq-Wat" secondAttribute="leading" id="2s3-nX-rVE"/>
+                                                <constraint firstItem="MsB-Cf-hh2" firstAttribute="top" secondItem="f9R-Dq-Wat" secondAttribute="top" id="Mni-MG-1ty"/>
+                                                <constraint firstAttribute="height" constant="570" id="Ni8-TW-aJO"/>
+                                                <constraint firstAttribute="trailing" secondItem="MsB-Cf-hh2" secondAttribute="trailing" id="SHZ-UX-7P9"/>
+                                                <constraint firstAttribute="bottom" secondItem="MsB-Cf-hh2" secondAttribute="bottom" id="ub9-wc-RbG"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgJ-mU-QIM">
-                                            <rect key="frame" x="0.0" y="800" width="471" height="500"/>
+                                            <rect key="frame" x="0.0" y="1070" width="471" height="575"/>
                                             <subviews>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="30" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="aCR-kR-Gaw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="471" height="500"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="471" height="575"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                                     <connections>
@@ -89,7 +78,7 @@
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstItem="aCR-kR-Gaw" firstAttribute="top" secondItem="mgJ-mU-QIM" secondAttribute="top" id="AJk-FO-Knl"/>
-                                                <constraint firstAttribute="height" constant="500" id="ELO-F8-2UH"/>
+                                                <constraint firstAttribute="height" constant="575" id="ELO-F8-2UH"/>
                                                 <constraint firstAttribute="bottom" secondItem="aCR-kR-Gaw" secondAttribute="bottom" id="FqO-Ie-jug"/>
                                                 <constraint firstItem="aCR-kR-Gaw" firstAttribute="leading" secondItem="mgJ-mU-QIM" secondAttribute="leading" id="Tas-jp-eXu"/>
                                                 <constraint firstAttribute="trailing" secondItem="aCR-kR-Gaw" secondAttribute="trailing" id="v1G-eP-YJp"/>
@@ -104,7 +93,6 @@
                                 <constraint firstAttribute="trailing" secondItem="Wya-b6-8Uc" secondAttribute="trailing" id="GIN-bw-7ti"/>
                                 <constraint firstAttribute="bottom" secondItem="Wya-b6-8Uc" secondAttribute="bottom" id="J5p-1P-PYr"/>
                                 <constraint firstItem="Wya-b6-8Uc" firstAttribute="top" secondItem="oXj-ZS-QuG" secondAttribute="top" id="kFF-Md-fZt"/>
-                                <constraint firstAttribute="height" constant="1300" id="sPz-PX-5wl"/>
                             </constraints>
                         </view>
                     </subviews>

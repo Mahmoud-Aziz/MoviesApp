@@ -17,7 +17,10 @@ class DetailsViewController: UIViewController {
   
   // MARK: - Private properties
   private let viewModel: DetailsViewModel
-  private let castCellID = "CastTableViewCell"
+  
+  // MARK: - UI Elements
+  let similarMoviesIndicator = UIActivityIndicatorView()
+  let castIndicator = UIActivityIndicatorView()
   
   // MARK: - Init
   init(viewModel: DetailsViewModel) {
@@ -43,46 +46,46 @@ private extension DetailsViewController {
   func setupView() {
     navigationItem.backBarButtonItem?.accessibilityIdentifier = "DetailsBackButton"
     similarMoviesTableView.registerCellNib(HomeTableViewCell.self)
-    castTableView.register(UITableViewCell.self, forCellReuseIdentifier: castCellID)
+    castTableView.register(UITableViewCell.self, forCellReuseIdentifier: viewModel.castCellID)
     similarMoviesTableView.rowHeight = 100
+    castIndicator.hidesWhenStopped = true
+    similarMoviesIndicator.hidesWhenStopped = true
     movieDetailsView.configure(with: viewModel.movieDetailsViewData)
     bindPosterImageData()
   }
   
   func bindViewModelState() {
     viewModel.state = { [weak self] state in
-      let similarMoviesIndicator = UIActivityIndicatorView()
-      let castIndicator = UIActivityIndicatorView()
+      guard let self else { return }
       switch state {
       case .loadingSimilarMoviesTableView:
-        let indicator = UIActivityIndicatorView()
-        self?.similarMoviesTableView.backgroundView = similarMoviesIndicator
+        self.similarMoviesTableView.backgroundView = self.similarMoviesIndicator
         similarMoviesIndicator.startAnimating()
         
       case .loadingSimilarMoviesCastTableView:
-        self?.castTableView.backgroundView = castIndicator
+        self.castTableView.backgroundView = self.castIndicator
         castIndicator.startAnimating()
         
       case .reloadSimilarMoviesTableView:
         similarMoviesIndicator.stopAnimating()
-        self?.similarMoviesTableView.reloadData()
+        self.similarMoviesTableView.reloadData()
         
       case .reloadSimilarMoviesCastTableView:
         castIndicator.stopAnimating()
-        self?.castTableView.reloadData()
+        self.castTableView.reloadData()
         
       case .failedFetchingSimilarMovies(let error):
         similarMoviesIndicator.stopAnimating()
         let failureView = FailureView()
         failureView.configure(image: error.image, description: error.message)
-        self?.similarMoviesTableView.backgroundView = failureView
-        self?.castTableViewContainerView.isHidden = true
+        self.similarMoviesTableView.backgroundView = failureView
+        self.castTableViewContainerView.isHidden = true
         
       case .failedFetchingSimilarMoviesCasts(let error):
         castIndicator.stopAnimating()
         let failureView = FailureView()
         failureView.configure(image: error.image, description: error.message)
-        self?.castTableView.backgroundView = failureView
+        self.castTableView.backgroundView = failureView
       default:
         break
       }
@@ -126,7 +129,7 @@ extension DetailsViewController: UITableViewDataSource {
       similarMoviesCell.setSelectedCellColor(.clear)
       return similarMoviesCell
     case castTableView:
-      let castTableViewCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: castCellID, for: indexPath)
+      let castTableViewCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: viewModel.castCellID, for: indexPath)
       let castMember = viewModel.getSimilarMoviesCast(at: indexPath)
       castTableViewCell.textLabel?.text = castMember?.name
       castTableViewCell.backgroundColor = .customSystemBackground
