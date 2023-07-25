@@ -51,9 +51,9 @@ private extension HomeViewModel {
     }
   }
   
-  func searchMovies(query: String) {
+  func searchMovies(query: String, enableDebounce: Bool) {
     state?.update(newState: .loading)
-    searchMoviesUseCase.execute(query: query) { [weak self] result in
+    searchMoviesUseCase.execute(query: query, enableDebounce: enableDebounce) { [weak self] result in
       guard let self else { return }
       switch result {
       case .success(let popularMovies):
@@ -88,12 +88,12 @@ extension HomeViewModel {
     getPopularMovies(pageCount: 1)
   }
   
-  func search(query: String?) {
+  func search(query: String?, enableDebounce: Bool) {
     guard let query = query?.lowercased(), !query.isEmpty else {
       resetSearch()
       return
     }
-    searchMovies(query: query)
+    searchMovies(query: query, enableDebounce: enableDebounce)
   }
   
   func resetSearch() {
