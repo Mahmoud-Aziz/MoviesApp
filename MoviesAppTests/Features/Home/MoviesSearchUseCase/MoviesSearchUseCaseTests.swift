@@ -40,7 +40,7 @@ class MoviesSearchUseCaseTests: XCTestCase {
     mockUseCase.result = .success(popularMovies)
     
     // When
-    sut.search(query: query)
+    sut.search(query: query, enableDebounce: true)
     
     // Then
     XCTAssertEqual(sut.searchFilteredResults!.count, 3)
@@ -58,7 +58,7 @@ class MoviesSearchUseCaseTests: XCTestCase {
     sut.performOnLoad()
     
     DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-      self?.sut.search(query: query)
+      self?.sut.search(query: query, enableDebounce: true)
       searchExpectation.fulfill()
     }
     
@@ -85,7 +85,7 @@ class MoviesSearchUseCaseTests: XCTestCase {
       let query = "Spider-Man"
       self?.mockUseCase.lastQuery = query
       self?.mockUseCase.executeCallCount += 1
-      self?.sut.search(query: query)
+      self?.sut.search(query: query, enableDebounce: true)
       // then
       XCTAssertEqual(self?.mockUseCase.executeCallCount, 1)
     })
@@ -96,7 +96,7 @@ class MoviesSearchUseCaseTests: XCTestCase {
       let query = "Iron Man"
       self?.mockUseCase.lastQuery = query
       self?.mockUseCase.executeCallCount += 1
-      self?.sut.search(query: "Iron Man")
+      self?.sut.search(query: "Iron Man", enableDebounce: true)
       // then
       XCTAssertEqual(self?.mockUseCase.executeCallCount, 2)
       XCTAssertEqual(self?.mockUseCase.lastQuery, "Iron Man")
