@@ -44,6 +44,7 @@ private extension FavoritesViewController {
   func bindViewModelState() {
     viewModel.state = { [weak self] state in
       self?.favoritesTableView.backgroundView = self?.emptyView
+      self?.showLoader(state == .loading)
       switch state {
       case .reload:
         self?.favoritesTableView.reloadData()
