@@ -1,5 +1,8 @@
+<div align="center">
+  
+![logo](https://res.cloudinary.com/dssjmyp0y/image/upload/v1690334408/Custom_dimensions_1024x1024_px_1_1_khsoxx.jpg)
 
-[Imgur](https://imgur.com/DJG2jVe)
+</div>
 
 # TMDB Discovery
 
