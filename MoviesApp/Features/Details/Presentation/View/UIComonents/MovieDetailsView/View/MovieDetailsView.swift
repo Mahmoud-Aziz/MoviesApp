@@ -67,7 +67,6 @@ private extension MovieDetailsView {
   }
   
   @objc func addToFavoritesTapped(sender: Any) {
-    // TODO: - [Aziz] debounce
     isAddedToFavorites.toggle()
     addToFavoritesImageView.tintColor = isAddedToFavorites ? .gold : .systemGray
     addToFavoritesTapped?()

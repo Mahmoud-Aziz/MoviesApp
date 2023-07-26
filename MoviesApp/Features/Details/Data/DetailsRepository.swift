@@ -55,14 +55,11 @@ class DetailsRepository: DetailsRepositoryProtocol {
     do {
       let existingMovies = try context.fetch(fetchRequest)
       if let existingMovie = existingMovies.first {
-        // Item with the same ID already exists, you can update it or skip saving it again.
-        // For example, to update, you can do the following:
         existingMovie.title = movieDetails.title
         existingMovie.subtitle = movieDetails.subtitle
         
         CoreDataManager.shared.saveContext()
       } else {
-        // Item with the same ID doesn't exist, save it as a new item.
         let movieEntity = FavoriteMovieEntity(context: context)
         movieEntity.title = movieDetails.title
         movieEntity.subtitle = movieDetails.subtitle
