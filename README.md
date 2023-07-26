@@ -51,6 +51,5 @@ Data binding between ```ViewModels``` and ```ViewController``` is done using **C
 
 
 ## GIF
-http://g.recordit.co/2lRV3DUbEd.gif
 
 ![App GIF](http://g.recordit.co/2lRV3DUbEd.gif)
