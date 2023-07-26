@@ -47,7 +47,7 @@ The view is **state-driven**. The view model controls the view's current state t
 Project supports two environments: **Development** and **Production**. The configurations is imported from .XCConfig file for each scheme.
 
 ## Test Coverage
-The project includes unit test cases for critical scenarios, as well as UI test cases for the home screen. However, the test coverage percentage decreased slightly after adding favorites functionality that depends on Core Data, so this part still needs to be tested.
+The project includes unit test cases for critical scenarios, as well as UI test cases for the home screen. However, the test coverage percentage decreased slightly after adding favorites functionality that depends on Core Data, so this part needs to be tested.
 
 ## More info
 The project depends on **URLSession** for networking and the network layer is built following **builder pattern**. 
