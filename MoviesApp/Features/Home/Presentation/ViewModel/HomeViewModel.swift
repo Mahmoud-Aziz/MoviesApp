@@ -13,7 +13,6 @@ class HomeViewModel {
   private var getPopularMoviesUseCase: GetPopularMoviesUseCaseProtocol
   private var searchMoviesUseCase: SearchMoviesUseCaseProtocol
   private var getMovieDetailsUseCase: GetMovieDetailsUseCaseProtocol
-  private var environment: AppEnvironmentProtocol
   
   // MARK: - Private Properties
   private(set) var movies: [Movie]?
@@ -21,10 +20,11 @@ class HomeViewModel {
   private(set) var totalPagesCount = 0
   private(set) var searchFilteredResults: [Movie]?
   private(set) var isFetching: Bool = false
-
+  private var environment: AppEnvironmentProtocol
+  
   // MARK: - Binding
   var state: HomeStateClosure?
-
+  
   // MARK: - Init
   init(getPopularMoviesUseCase: GetPopularMoviesUseCaseProtocol = GetPopularMoviesUseCase(),
        searchMoviesUseCase: SearchMoviesUseCaseProtocol = SearchMoviesUseCase(),
@@ -34,9 +34,9 @@ class HomeViewModel {
     self.searchMoviesUseCase = searchMoviesUseCase
     self.getMovieDetailsUseCase = getMovieDetailsUseCase
     self.environment = ServiceLocator.shared.environment
-//    super.init()
   }
 }
+
 // MARK: - Use Case Execution
 private extension HomeViewModel {
   func getPopularMovies(pageIndex: Int, showIndicator: Bool) {
@@ -98,6 +98,14 @@ private extension HomeViewModel {
 
 // MARK: - View Helpers
 extension HomeViewModel {
+  var itemsCount: Int {
+    searchFilteredResults?.count ?? .zero
+  }
+  
+  var viewTitle: String {
+    environment.appName
+  }
+  
   func performOnLoad() {
     getPopularMovies(pageIndex: 1, showIndicator: true)
   }
@@ -136,13 +144,5 @@ extension HomeViewModel {
     let id = searchFilteredResults[index.row].id
     state?(.loading)
     getMovieDetails(id: id)
-  }
-  
-  var itemsCount: Int {
-    searchFilteredResults?.count ?? .zero
-  }
-  
-  var viewTitle: String {
-    environment.appName
   }
 }

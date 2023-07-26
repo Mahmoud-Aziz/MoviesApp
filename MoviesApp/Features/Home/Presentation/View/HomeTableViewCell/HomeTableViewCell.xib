@@ -60,7 +60,6 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="containerView" destination="f2f-Eb-7zj" id="R6P-nf-THb"/>
                 <outlet property="movieTitleAndYearInfoView" destination="aXE-kr-iTW" id="e7r-SS-THm"/>
                 <outlet property="voteAverageInfoView" destination="62C-Xw-Td2" id="qPF-H9-Okz"/>
             </connections>

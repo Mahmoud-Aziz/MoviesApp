@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: - HomeState
-public enum HomeState {
+enum HomeState {
   case idle
   case loading
   case reload
@@ -20,7 +20,7 @@ public enum HomeState {
 
 // MARK: - HomeState + Equatable
 extension HomeState: Equatable {
-  public static func == (lhs: HomeState, rhs: HomeState) -> Bool {
+  static func == (lhs: HomeState, rhs: HomeState) -> Bool {
     switch (lhs, rhs) {
     case (.idle, .idle): return true
     case (.loading, .loading): return true

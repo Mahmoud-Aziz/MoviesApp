@@ -1,37 +1,35 @@
 //
-//  HomeError.swift
+//  FavoritesError.swift
 //  MoviesApp
 //
-//  Created by Mahmoud Aziz on 23/07/2023.
+//  Created by Mahmoud Aziz on 26/07/2023.
 //  Copyright © 2023 Telda. All rights reserved.
 //
 
 import UIKit
 
-enum HomeError: ErrorPresentable {
-  case searchFailed
-  case fetchingPopularMoviesFailed
-  case fetchingMovieDetailsFailed
-
+enum FavoritesError: ErrorPresentable {
+  case fetchingFavoriteMoviesFailed
+  case clearAllSavedFavoritesFailed
+  case allSavedFavoritesCleared
+  
   var message: String {
     switch self {
-    case .searchFailed:
+    case .fetchingFavoriteMoviesFailed:
       return "Search query doesn't match any of our records"
-    case .fetchingPopularMoviesFailed:
+    case .clearAllSavedFavoritesFailed:
       return "Sorry, unexpected error occurred! please try again"
-    case .fetchingMovieDetailsFailed:
-      return "Sorry, we couldn't get details for this movie"
+    case .allSavedFavoritesCleared:
+      return "All saved favorites are cleared!"
     }
   }
   
   var image: UIImage? {
     var image: UIImage?
     switch self {
-    case .searchFailed:
-      image = .notFound
-    case .fetchingPopularMoviesFailed:
+    case .fetchingFavoriteMoviesFailed:
       image = .failed
-    case .fetchingMovieDetailsFailed:
+    default:
       break
     }
     return image
@@ -39,7 +37,12 @@ enum HomeError: ErrorPresentable {
   
   var alert: UIAlertController {
     switch self {
-    case .fetchingMovieDetailsFailed:
+    case .clearAllSavedFavoritesFailed:
+      let action = UIAlertAction(title: "dismiss", style: .default)
+      let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+      alert.addAction(action)
+      return alert
+    case .allSavedFavoritesCleared:
       let action = UIAlertAction(title: "dismiss", style: .default)
       let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
       alert.addAction(action)

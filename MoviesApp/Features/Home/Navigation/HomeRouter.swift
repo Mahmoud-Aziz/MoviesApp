@@ -10,12 +10,15 @@ import UIKit
 
 enum HomeRouter: RouteProtocol {
   case details(MovieDetails)
-  
+  case favorites
+
   var destination: UIViewController {
     switch self {
     case let .details(movieDetails):
       let viewModel = DetailsViewModel(movieDetails: movieDetails)
       return DetailsViewController(viewModel: viewModel)
+    case .favorites:
+      return FavoritesViewController()
     }
   }
   
@@ -23,6 +26,8 @@ enum HomeRouter: RouteProtocol {
     switch self {
     case .details:
       return .push
+    case .favorites:
+      return .present
     }
   }
 }
