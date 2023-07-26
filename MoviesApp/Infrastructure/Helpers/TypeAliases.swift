@@ -12,3 +12,6 @@ typealias ResultClosure<T: Decodable> = (Result<T, APIError>) -> Void
 typealias DataClosure = (Data) -> Void
 typealias HomeStateClosure = (HomeState) -> Void
 typealias DetailsStateClosure = (DetailsState) -> Void
+typealias VoidClosure = () -> Void
+typealias FavoriteMovieResultClosure = (Result<[FavoriteMovie], Error>) -> Void
+typealias FavoritesStateClosure = (FavoritesState) -> Void

@@ -44,6 +44,7 @@ private extension HomeViewController {
     title = viewModel.viewTitle
     homeTableView.registerCellNib(HomeTableViewCell.self)
     homeTableView.rowHeight = 100
+    setupFavoriteBarButtonItem()
   }
   
   func bindViewModelState() {
@@ -64,6 +65,18 @@ private extension HomeViewController {
         break
       }
     }
+  }
+  
+  func setupFavoriteBarButtonItem() {
+    let rightBarButton = UIButton(type: .custom)
+    rightBarButton.setImage(.favorites, for: .normal)
+    rightBarButton.addTarget(self, action: #selector(rightBarButtonTapped), for: .touchUpInside)
+    let rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
+    navigationItem.rightBarButtonItem = rightBarButtonItem
+  }
+  
+  @objc func rightBarButtonTapped() {
+    navigate(to: HomeRouter.favorites)
   }
 }
 

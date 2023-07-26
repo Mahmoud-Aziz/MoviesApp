@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum RouteStyle {
+enum RouteStyle {
   case present
   case push
 }

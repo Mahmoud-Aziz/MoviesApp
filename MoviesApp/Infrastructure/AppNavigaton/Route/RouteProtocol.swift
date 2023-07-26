@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol RouteProtocol {
+protocol RouteProtocol {
   var destination: UIViewController { get }
   var style: RouteStyle { get }
 }

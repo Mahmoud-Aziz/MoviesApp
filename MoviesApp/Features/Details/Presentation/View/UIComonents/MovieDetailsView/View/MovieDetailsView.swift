@@ -22,6 +22,8 @@ class MovieDetailsView: UIView {
   // MARK: - Private Properties
   private var isAddedToFavorites: Bool = false
   
+  var addToFavoritesTapped: VoidClosure?
+
   // MARK: - Init
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -60,14 +62,14 @@ private extension MovieDetailsView {
   func setupView() {
     loadfromNib()
     posterActivityIndicator.startAnimating()
-    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addToFavoritesTapped))
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addToFavoritesTapped(sender:)))
     addToFavoritesImageView.addGestureRecognizer(tapGesture)
   }
   
   @objc func addToFavoritesTapped(sender: Any) {
     // TODO: - [Aziz] debounce
     isAddedToFavorites.toggle()
-    // TODO: - [Aziz] add to colors 
-    addToFavoritesImageView.tintColor = isAddedToFavorites ? UIColor(named: "Gold") : .systemGray
+    addToFavoritesImageView.tintColor = isAddedToFavorites ? .gold : .systemGray
+    addToFavoritesTapped?()
   }
 }
