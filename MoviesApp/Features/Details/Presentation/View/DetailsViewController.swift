@@ -52,6 +52,7 @@ private extension DetailsViewController {
     similarMoviesIndicator.hidesWhenStopped = true
     movieDetailsView.configure(with: viewModel.movieDetailsViewData)
     bindPosterImageData()
+    bindFavoriteButtonAction()
   }
   
   func bindViewModelState() {
@@ -97,6 +98,12 @@ private extension DetailsViewController {
       self?.movieDetailsView.setPosterImage(data: data)
     }
   }
+  
+  func bindFavoriteButtonAction() {
+    movieDetailsView.addToFavoritesTapped = { [weak self] in
+      self?.viewModel.saveFavoriteMovie()
+    }
+  }
 }
 
 // MARK: - Similar movies and similar movies cast UITableViewDataSource
@@ -129,7 +136,7 @@ extension DetailsViewController: UITableViewDataSource {
       similarMoviesCell.setSelectedCellColor(.clear)
       return similarMoviesCell
     case castTableView:
-      let castTableViewCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: viewModel.castCellID, for: indexPath)
+      let castTableViewCell = tableView.dequeueReusableCell(withIdentifier: viewModel.castCellID, for: indexPath)
       let castMember = viewModel.getSimilarMoviesCast(at: indexPath)
       castTableViewCell.textLabel?.text = castMember?.name
       castTableViewCell.backgroundColor = .customSystemBackground

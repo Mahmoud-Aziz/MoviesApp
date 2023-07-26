@@ -9,6 +9,7 @@
 import UIKit
 
 struct MovieDetailsViewData {
+  let id: Int
   let title: String
   let subtitle: String
   let voteAverage: String

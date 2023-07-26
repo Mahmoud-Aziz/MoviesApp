@@ -13,7 +13,8 @@ class DetailsViewModel {
   private let getSimilarMoviesUseCase: GetSimilarMoviesUseCaseProtocol
   private let getSimilarMoviesCastsUseCase: GetSimilarMoviesCastsUseCaseProtocol
   private let downloadMoviePosterUseCase: DownloadMoviePosterUseCaseProtocol
-  
+  private let saveFavoriteMovieUseCase: SaveFavoriteMovieUseCaseProtocol
+
   // MARK: - Private Properties
   private let group: DispatchGroup
   private let movieDetails: MovieDetails
@@ -31,12 +32,14 @@ class DetailsViewModel {
        getSimilarMoviesUseCase: GetSimilarMoviesUseCaseProtocol = GetSimilarMoviesUseCase(),
        getSimilarMoviesCastsUseCase: GetSimilarMoviesCastsUseCaseProtocol = GetSimilarMoviesCastsUseCase(),
        downloadMoviePosterUseCase: DownloadMoviePosterUseCaseProtocol = DownloadMoviePosterUseCase(),
+       saveFavoriteMovieUseCase: SaveFavoriteMovieUseCaseProtocol = SaveFavoriteMovieUseCase(),
        departments: [CastDepartment] = [.acting, .directing]) {
     self.group = group
     self.movieDetails = movieDetails
     self.getSimilarMoviesUseCase = getSimilarMoviesUseCase
     self.getSimilarMoviesCastsUseCase = getSimilarMoviesCastsUseCase
     self.downloadMoviePosterUseCase  = downloadMoviePosterUseCase
+    self.saveFavoriteMovieUseCase = saveFavoriteMovieUseCase
     self.departments = departments
   }
 }
@@ -153,7 +156,8 @@ extension DetailsViewModel {
 // MARK: - View Helpers
 extension DetailsViewModel {
   var movieDetailsViewData: MovieDetailsViewData {
-    .init(title: movieDetails.title,
+    .init(id: movieDetails.id,
+          title: movieDetails.title,
           subtitle: movieDetails.subtitle,
           voteAverage: movieDetails.formattedVoteAverage,
           overview: movieDetails.overview,
@@ -163,6 +167,10 @@ extension DetailsViewModel {
   
   var similarMoviesItemsCount: Int {
     randomFiveSimilarMovies?.count ?? .zero
+  }
+  
+  var castCellID: String {
+    "CastTableViewCell"
   }
   
   func performOnLoad() {
@@ -188,7 +196,7 @@ extension DetailsViewModel {
     return department.headerTitle
   }
   
-  var castCellID: String {
-    "CastTableViewCell" 
+  func saveFavoriteMovie() {
+    saveFavoriteMovieUseCase.execute(movieDetails: movieDetailsViewData)
   }
 }

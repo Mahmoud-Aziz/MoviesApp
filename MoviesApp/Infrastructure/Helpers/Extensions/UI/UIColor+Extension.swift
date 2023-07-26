@@ -11,4 +11,5 @@ import UIKit
 extension UIColor {
   static var customSystemBackground = UIColor(named: "SystemBackground")
   static var reversedSystemBackground = UIColor(named: "SystemBackgroundReversed")
+  static var gold = UIColor(named: "Gold")
 }

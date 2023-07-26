@@ -12,4 +12,5 @@ extension UIImage {
   static var notFound = UIImage(named: "notFound")
   static var failed = UIImage(named: "failure")
   static var placeholder = UIImage(named: "placeholder")
+  static var favorites = UIImage(named: "favorites")
 }

@@ -19,7 +19,7 @@ extension UIViewController: NavigationProtocol {
       navigationController?.pushViewController(viewController, animated: true)
     case .present:
       viewController.modalTransitionStyle = .crossDissolve
-      viewController.modalPresentationStyle = .fullScreen
+      viewController.modalPresentationStyle = .pageSheet
       present(viewController, animated: true, completion: nil)
     }
   }

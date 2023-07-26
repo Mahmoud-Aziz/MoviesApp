@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - DetailsState
-public enum DetailsState {
+enum DetailsState {
   case idle
   case loadingSimilarMoviesTableView
   case loadingSimilarMoviesCastTableView
@@ -21,7 +21,7 @@ public enum DetailsState {
 
 // MARK: - DetailsState + Equatable
 extension DetailsState: Equatable {
-  public static func == (lhs: DetailsState, rhs: DetailsState) -> Bool {
+  static func == (lhs: DetailsState, rhs: DetailsState) -> Bool {
     switch (lhs, rhs) {
     case (.idle, .idle): return true
     case (.loadingSimilarMoviesTableView, .loadingSimilarMoviesTableView): return true
